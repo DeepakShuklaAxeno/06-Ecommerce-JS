@@ -1,0 +1,168 @@
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-Regular.woff") format("woff");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-Bold.woff") format("woff");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-Medium.woff") format("woff");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Integral CF";
+  src: url("../assets/fonts/Fontspring-DEMO-integralcf-bold.otf") format("opentype");
+  font-weight: 700;
+  font-display: swap;
+}
+.header {
+  max-width: 90rem;
+  max-height: 8.375rem;
+  display: flex;
+  flex-direction: column;
+}
+.header .header__promo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  font-family: "Satoshi", sans-serif;
+  height: 2.375rem;
+  font-size: 14px;
+  max-width: 100%;
+  padding: 0.5625rem 0;
+}
+.header .header__promo .header__signup-text {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header .header__promo .header__signup-text p {
+  text-align: center;
+  font-weight: 400;
+}
+.header .header__promo .header__signup-text p a {
+  font-family: "Satoshi", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+  text-decoration: underline;
+}
+.header .header__promo .header__promo-close {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 6.465rem;
+  top: 0.776875rem;
+}
+.header .header__main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  max-height: 6rem;
+  padding: 1.5rem 6.25rem;
+}
+.header .header__main-container .header__main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+.header .header__main-container .header__main .header__main-logo {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 32px;
+  font-family: "Integral CF", sans-serif;
+}
+.header .header__main-container .header__main .header__main-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+.header .header__main-container .header__main .header__main-nav ul li a {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  white-space: nowrap;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0;
+  font-family: "Satoshi", sans-serif;
+  color: rgb(0, 0, 0);
+}
+.header .header__main-container .header__main .header__search {
+  display: flex;
+  position: relative;
+  height: 3rem;
+  border-radius: 3.875rem;
+  width: 100%;
+  background-color: rgb(240, 240, 240);
+  align-items: center;
+  max-width: 36.0625rem;
+}
+.header .header__main-container .header__main .header__search svg {
+  position: absolute;
+  top: 0.86625rem;
+  left: 0.92875rem;
+}
+.header .header__main-container .header__main .header__search .header__search-input {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  width: 9.4375rem;
+  margin-left: 3.25rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.header .header__main-container .header__main .header__main-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.109375rem;
+}
+
+.main {
+  display: none;
+}
+.main__hero__main__image-bg {
+  width: 100vw;
+}
+
+.footer {
+  display: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+/*# sourceMappingURL=main.css.map */
