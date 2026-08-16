@@ -2,5 +2,134 @@
 @use "../abstracts/_functions" as *;
 
 .footer{
-  display: none;
+  background-color: rgba(240, 240, 240, 1);
+  display: flex;
+  flex-direction: column;
+  justify-items:center;
+  text-align: center;
+  width: 100%;
+  padding: 0 convert(17);
+
+
+  .footer__subscribe{
+
+    display: flex;
+    margin-top:convert(-135);
+    flex-direction: column;
+    gap: 2rem;
+    background-color: $primary-black;
+    border-radius: convert(20);
+    padding: convert(24) convert(24);
+
+
+    h1{
+      max-width: convert(397);
+      text-align: left;
+      font-family: $font-primary;
+      transform: translateY(-3);
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 35px;
+      letter-spacing: 0;
+      color: $primary-white;
+
+    }
+
+    .footer__subscribe-email{
+      display: flex;
+      flex-direction: column;
+      align-content: space-between;
+      gap:convert(12);
+
+      .footer__email-input
+      {
+        @include button-style;
+        display: flex;
+        height: convert(42);
+        max-width: convert(311);
+        justify-content: left;
+        gap:convert(12);
+        background-color: $primary-white;
+        padding: convert(12) convert(16);
+
+        input{
+          border:none;
+          padding:0;
+          margin:0;
+        }
+      }
+        .footer__subscribe-button{
+          @include button-style;
+          @include medium-text;
+          display: flex;
+          height:convert(42);
+          max-width: convert(311);
+          background-color: $primary-white;
+          padding: convert(12) 0;
+          align-items: center;
+          align-content: center;
+          justify-content: center;
+          text-align: center;
+          border-radius: convert(62);
+          border:none;
+          outline: none;
+
+        }
+    }
+  }
+  .footer__main{
+    margin-top: convert(32);
+    display: flex;
+    flex-direction: column;
+
+    .footer__brand{
+      display: flex;
+      text-align: left;
+      flex-direction: column;
+      align-content: space-between;
+      gap:convert(20);
+
+      .footer__brand-intro{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: convert(14);
+        a{
+          h1{
+            font-family: $font-primary;
+            font-weight: 700;
+            line-height: 100%;
+            letter-spacing: 0;
+            vertical-align: middle;
+            color: $primary-black;
+            font-size:convert(28.85);
+          }
+        }
+        .footer__brand-description{
+          color:rgba(0, 0, 0, 0.6);
+        }
+
+      }
+      .brand__socials{
+        display:flex;
+        flex-direction: row;
+
+        ul{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          gap: convert(12);
+          list-style: none;
+
+        }
+      }
+    }
+    .footer__nav{
+      display: flex;
+      flex-direction:row;
+      flex-wrap:wrap;
+      flex:1;
+
+    }
+  }
 }

@@ -1,0 +1,93 @@
+@use "../abstracts/_variables.scss" as *;
+@use "../abstracts/functions.scss" as *;
+
+.home-main{
+  margin-bottom:convert(135);
+  .hero{
+    .hero__main{
+      display: flex;
+      background-color: rgba(242, 240, 241, 1);
+      justify-content: flex-end;
+      width:100%;
+      position:relative;
+
+      .hero__content{
+        width:100%;
+        position: absolute;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+
+        padding:convert(40) convert(16) 0;
+        gap: 1.5rem;
+
+        .hero__main-heading{
+          @include sectional-heading;
+          text-align: left;
+        }
+
+        .hero__main-text{
+          @include regular-text;
+          color:rgba(0, 0, 0, 0.6);
+        }
+        .btn-shopnow{
+          @include button-style;
+          @include medium-text;
+          padding: convert(16) 0;
+          background-color: $primary-black;
+          color:$primary-white;
+          text-align: center;
+          align-items: center;
+        }
+
+      .hero__stats {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: convert(16) 0;
+
+        .stat-item {
+          text-align: center;
+          flex: 1;
+            .stat-team__number{
+              
+
+            }
+
+        }
+
+        .stat-divider {
+          width: 1px;
+          height: convert(52);
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+
+
+
+      }
+      }
+      .hero__bg-canvas{
+        //width: 100%;
+        height:auto;
+        position: relative;
+        top:0;
+        right:0;
+        bottom:0;
+        z-index: -1;
+        margin:0;
+        padding:0;
+      }
+      .hero__bg-models{
+        height:auto;
+        max-width: convert(390);
+        bottom: 0;
+        margin:0;
+        padding:0;
+        position: absolute;
+        z-index: 1;
+      }
+    }
+  }
+}

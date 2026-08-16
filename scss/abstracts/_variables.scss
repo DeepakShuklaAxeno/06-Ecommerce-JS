@@ -1,7 +1,45 @@
-@use "_typography.scss";
-
+@use "_typography.scss" as *;
+@use "_functions.scss" as *;
 $font-primary: 'Integral CF', sans-serif;
 $font-secondary: 'Satoshi', sans-serif;
 $primary-black: rgb(0,0,0,1);
 $primary-white: rgba(255, 255, 255, 1);
+$font-size-regular: 14px;
+$font-size-medium:16px;
+$font-size-large:32px;
+$font-weight-regular: 400;
+$font-weight-medium:500;
+$font-weight-bold:700;
 
+@mixin button-style{
+
+  border-radius: convert(62);
+  border:none;
+
+}
+@mixin sectional-heading{
+  font-family: $font-primary;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-large;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+
+@mixin regular-text{
+  font-size: $font-size-regular;
+  font-family: $font-secondary;
+  font-weight: 400;
+  letter-spacing: 0;
+
+}
+
+@mixin medium-text{
+  font-family: $font-secondary;
+  font-size: 16px;
+  font-weight: $font-weight-medium;
+  letter-spacing:0;
+}
+@mixin small-text{
+  font-family: $font-secondary;
+  font-size:12px;
+}

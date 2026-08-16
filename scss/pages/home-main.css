@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-Regular.woff") format("woff");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-Bold.woff") format("woff");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-Medium.woff") format("woff");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Integral CF";
+  src: url("../assets/fonts/Fontspring-DEMO-integralcf-bold.otf") format("opentype");
+  font-weight: 700;
+  font-display: swap;
+}
+.home-main {
+  margin-bottom: 8.4375rem;
+}
+.home-main .hero .hero__main {
+  position: relative;
+  gap: 0;
+}
+.home-main .hero .hero__main .hero__bg-canvas {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  margin: 0;
+  padding: 0;
+}
+.home-main .hero .hero__main .hero__bg-models {
+  max-width: 24.375rem;
+}
+
+/*# sourceMappingURL=home-main.css.map */
