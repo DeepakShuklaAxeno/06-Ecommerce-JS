@@ -23,7 +23,7 @@
 
 
     h1{
-      max-width: convert(397);
+
       text-align: left;
       font-family: $font-primary;
       transform: translateY(-3);
@@ -46,7 +46,7 @@
         @include button-style;
         display: flex;
         height: convert(42);
-        max-width: convert(311);
+
         justify-content: left;
         gap:convert(12);
         background-color: $primary-white;
@@ -63,7 +63,7 @@
           @include medium-text;
           display: flex;
           height:convert(42);
-          max-width: convert(311);
+
           background-color: $primary-white;
           padding: convert(12) 0;
           align-items: center;
@@ -81,6 +81,8 @@
     margin-top: convert(32);
     display: flex;
     flex-direction: column;
+    align-content: space-between;
+    gap:24px;
 
     .footer__brand{
       display: flex;
@@ -106,6 +108,8 @@
           }
         }
         .footer__brand-description{
+          @include regular-text;
+          line-height: 20px;
           color:rgba(0, 0, 0, 0.6);
         }
 
@@ -125,11 +129,63 @@
       }
     }
     .footer__nav{
-      display: flex;
-      flex-direction:row;
-      flex-wrap:wrap;
-      flex:1;
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap:24px;
+      justify-content: space-between;
+      div{
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap:convert(16);
+
+        h3{
+          font-family: $font-secondary;
+          font-size: $font-size-regular;
+          color: $primary-black;
+          line-height:18px;
+          font-weight: $font-weight-medium;
+          letter-spacing: 3px;
+        }
+        ul{
+          gap:convert(16);
+          display: flex;
+          flex-direction: column;
+          li{
+
+
+            a{
+              @include regular-text;
+              line-height: 16px;
+              color: rgba(0, 0, 0, 0.6);
+
+            }
+
+          }
+        }
+      }
 
     }
+  }
+  .footer__bottom{
+    display: flex;
+    padding-top: convert(16);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    align-items: center;
+    gap:convert(16);
+
+    .footer__copyright{
+      @include regular-text;
+      color: rgba(0, 0, 0, 0.6);
+    }
+    .footer__payments{
+      ul{
+        display: flex;
+        flex-direction: row;
+
+      }
+    }
+
   }
 }

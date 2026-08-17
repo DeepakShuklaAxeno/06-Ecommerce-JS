@@ -44,16 +44,20 @@
       .hero__stats {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         gap: convert(16) 0;
 
         .stat-item {
           text-align: center;
           flex: 1;
-            .stat-team__number{
-              
-
+            .stat-item__number{
+              font-family: $font-secondary;
+              font-size:24px;
+              font-weight: $font-weight-bold;
+              line-height: 100%;
+              letter-spacing: 0;
+              vertical-align: middle;
             }
 
         }
