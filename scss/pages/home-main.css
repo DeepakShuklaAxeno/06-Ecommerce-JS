@@ -29,7 +29,7 @@
   position: relative;
   gap: 0;
 }
-.home-main .hero .hero__main .hero__bg-canvas {
+.home-main .hero .hero__main .hero__empty-canvas {
   width: 100%;
   position: absolute;
   top: 0;

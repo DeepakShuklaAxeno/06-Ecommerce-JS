@@ -1,97 +1,131 @@
 @use "../abstracts/_variables.scss" as *;
 @use "../abstracts/functions.scss" as *;
 
-.home-main{
-  margin-bottom:convert(135);
-  .hero{
-    .hero__main{
+.home-main {
+  margin-bottom: convert(135);
+
+  .hero {
+    .hero__main {
       display: flex;
       background-color: rgba(242, 240, 241, 1);
-      justify-content: flex-end;
-      width:100%;
-      position:relative;
+      justify-content: center;
+      width: 100%;
+      flex-direction: column;
+      padding-top: convert(40);
+      gap:0;
 
-      .hero__content{
-        width:100%;
-        position: absolute;
-        z-index: 2;
+      .hero__main-content {
+        padding: 0 convert(16) ;
         display: flex;
-        flex-direction: column;
-        justify-content: left;
+        flex-direction:column;
+        gap:convert(20);
 
-        padding:convert(40) convert(16) 0;
-        gap: 1.5rem;
-
-        .hero__main-heading{
+        .hero__main-heading {
           @include sectional-heading;
           text-align: left;
+
         }
 
-        .hero__main-text{
+        .hero__main-text {
           @include regular-text;
-          color:rgba(0, 0, 0, 0.6);
+          color: rgba(0, 0, 0, 0.6);
         }
-        .btn-shopnow{
+        .btn-shopnow {
           @include button-style;
           @include medium-text;
           padding: convert(16) 0;
           background-color: $primary-black;
-          color:$primary-white;
+          color: $primary-white;
           text-align: center;
           align-items: center;
+          width: 100%;
         }
 
-      .hero__stats {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        gap: convert(16) 0;
-
-        .stat-item {
+        .hero__stats {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
           text-align: center;
-          flex: 1;
-            .stat-item__number{
+          align-items: center;
+          gap: convert(16) 0;
+
+          .stat-item {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            flex: 1;
+
+            &--full {
+              flex: 0 0 100%;
+              margin-top: convert(12);
+            }
+
+            .stat-item__number {
               font-family: $font-secondary;
-              font-size:24px;
+              font-size: 24px;
               font-weight: $font-weight-bold;
               line-height: 100%;
               letter-spacing: 0;
               vertical-align: middle;
             }
 
+            .stat-item__label {
+              font-family: $font-secondary;
+              font-weight: $font-weight-regular;
+              font-size: convert(12px);
+              line-height: 22px;
+              letter-spacing: 0;
+              color: rgba(0, 0, 0, 0.6);
+            }
+          }
+
+          .stat-divider {
+            width: 1px;
+            height: convert(52);
+            background-color: rgba(0, 0, 0, 0.1);
+          }
+
         }
 
-        .stat-divider {
-          width: 1px;
-          height: convert(52);
-          background-color: rgba(0, 0, 0, 0.1);
-        }
-
-
-
       }
-      }
-      .hero__bg-canvas{
-        //width: 100%;
-        height:auto;
+      .hero__image-area{
         position: relative;
-        top:0;
-        right:0;
-        bottom:0;
-        z-index: -1;
-        margin:0;
-        padding:0;
+        .small-star {
+          position: absolute;
+          left: convert(27);
+          top: convert(137);
+        }
+
+        .big-star {
+          position: absolute;
+          left: convert(293);
+          top: convert(40);
+        }
+
+
+        .hero__models-canvas-desktop {
+          display: none;
+        }
+
+        .hero__bg-models {
+          max-width: convert(390);
+          margin: 0;
+          padding: 0;
+        }
+
       }
-      .hero__bg-models{
-        height:auto;
-        max-width: convert(390);
-        bottom: 0;
-        margin:0;
-        padding:0;
-        position: absolute;
-        z-index: 1;
+      .hero__main-luxury{
+        background-color: $primary-black;
+        display: flex;
+        flex-direction: row;
+        padding: convert(16);
+        gap:convert(34);
+        flex-wrap: wrap;
       }
+
+
+
+
     }
   }
 }
