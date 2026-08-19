@@ -7,9 +7,11 @@ $primary-white: rgba(255, 255, 255, 1);
 $font-size-regular: 14px;
 $font-size-medium:16px;
 $font-size-large:32px;
+$font-desktop-large:64px;
 $font-weight-regular: 400;
 $font-weight-medium:500;
 $font-weight-bold:700;
+$space-between: 'space-between';
 
 @mixin button-style{
 
@@ -42,4 +44,16 @@ $font-weight-bold:700;
 @mixin small-text{
   font-family: $font-secondary;
   font-size:12px;
+}
+
+@mixin flex-row($justify){
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@mixin flex-column($justify){
+  display:flex;
+  flex-direction: column;
+  justify-content: $justify;
 }
