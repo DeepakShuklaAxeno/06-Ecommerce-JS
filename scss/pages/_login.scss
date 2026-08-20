@@ -1,0 +1,201 @@
+@use "../abstracts/_variables.scss" as *;
+@use "../abstracts/functions.scss" as *;
+
+.auth-body {
+    background-color: rgba(240, 240, 240, 1);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-page {
+    width: 100%;
+    padding: convert(16);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-box {
+    background-color: $primary-white;
+    width: 100%;
+    max-width: convert(480);
+    padding: convert(40) convert(24);
+    border-radius: convert(20);
+    box-shadow: 0 convert(10) convert(30) rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+        padding: convert(48) convert(48);
+    }
+
+    &__brand {
+        font-family: $font-primary;
+        font-size: convert(36);
+        font-weight: 900;
+        color: $primary-black;
+        text-align: center;
+        text-decoration: none;
+        margin-bottom: convert(40);
+        letter-spacing: convert(-1);
+    }
+
+    &__title {
+        font-family: $font-primary;
+        font-size: convert(28);
+        font-weight: 900;
+        text-transform: uppercase;
+        color: $primary-black;
+        margin-bottom: convert(8);
+
+        @media (min-width: 768px) {
+            font-size: convert(32);
+        }
+    }
+
+    &__subtitle {
+        font-family: $font-secondary;
+        font-size: convert(14);
+        color: rgba(0, 0, 0, 0.6);
+        margin-bottom: convert(24);
+
+        @media (min-width: 768px) {
+            font-size: convert(16);
+            margin-bottom: convert(32);
+        }
+    }
+
+    &__error {
+        color: #FF3333;
+        font-family: $font-secondary;
+        font-size: convert(14);
+        font-weight: 500;
+        min-height: convert(20);
+        margin-bottom: convert(16);
+    }
+
+    &__footer {
+        margin-top: convert(32);
+        text-align: center;
+    }
+
+    &__footer-text {
+        font-family: $font-secondary;
+        font-size: convert(14);
+        color: rgba(0, 0, 0, 0.6);
+
+        @media (min-width: 768px) {
+            font-size: convert(16);
+        }
+    }
+
+    &__link {
+        color: $primary-black;
+        font-weight: 700;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: convert(20);
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        gap: convert(8);
+    }
+
+    &__label {
+        font-family: $font-secondary;
+        font-size: convert(14);
+        font-weight: 600;
+        color: $primary-black;
+    }
+
+    &__input {
+        width: 100%;
+        background-color: rgba(240, 240, 240, 1);
+        border: 1px solid transparent;
+        border-radius: convert(62);
+        padding: convert(16) convert(24);
+        font-family: $font-secondary;
+        font-size: convert(16);
+        color: $primary-black;
+        outline: none;
+        transition: all 0.3s ease;
+
+        &::placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        &:focus {
+            border-color: rgba(0, 0, 0, 0.2);
+            background-color: $primary-white;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: $font-secondary;
+        font-size: convert(14);
+    }
+
+    &__checkbox {
+        display: flex;
+        align-items: center;
+        gap: convert(8);
+        cursor: pointer;
+    }
+
+    &__checkbox-input {
+        accent-color: $primary-black;
+        width: convert(16);
+        height: convert(16);
+        cursor: pointer;
+    }
+
+    &__checkbox-text {
+        color: rgba(0, 0, 0, 0.6);
+        font-weight: 500;
+    }
+
+    &__link {
+        color: $primary-black;
+        font-weight: 600;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__submit {
+        background-color: $primary-black;
+        color: $primary-white;
+        width: 100%;
+        border-radius: convert(62);
+        padding: convert(16) 0;
+        margin-top: convert(12);
+        border: none;
+        cursor: pointer;
+        font-family: $font-secondary;
+        font-weight: 500;
+        font-size: convert(16);
+        transition: opacity 0.3s ease;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}

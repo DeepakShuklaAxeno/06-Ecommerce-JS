@@ -1,0 +1,207 @@
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-Regular.woff") format("woff");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-Bold.woff") format("woff");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-Medium.woff") format("woff");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Integral CF";
+  src: url("../assets/fonts/Fontspring-DEMO-integralcf-bold.otf") format("opentype");
+  font-weight: 700;
+  font-display: swap;
+}
+.auth-body {
+  background-color: rgb(240, 240, 240);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-page {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-box {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  max-width: 30rem;
+  padding: 2.5rem 1.5rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  .auth-box {
+    padding: 3rem 3rem;
+  }
+}
+.auth-box__brand {
+  font-family: "Integral CF", sans-serif;
+  font-size: 2.25rem;
+  font-weight: 900;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.0625rem;
+}
+.auth-box__title {
+  font-family: "Integral CF", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: rgb(0, 0, 0);
+  margin-bottom: 0.5rem;
+}
+@media (min-width: 768px) {
+  .auth-box__title {
+    font-size: 2rem;
+  }
+}
+.auth-box__subtitle {
+  font-family: "Satoshi", sans-serif;
+  font-size: 0.875rem;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 768px) {
+  .auth-box__subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+.auth-box__error {
+  color: #FF3333;
+  font-family: "Satoshi", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  min-height: 1.25rem;
+  margin-bottom: 1rem;
+}
+.auth-box__footer {
+  margin-top: 2rem;
+  text-align: center;
+}
+.auth-box__footer-text {
+  font-family: "Satoshi", sans-serif;
+  font-size: 0.875rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+@media (min-width: 768px) {
+  .auth-box__footer-text {
+    font-size: 1rem;
+  }
+}
+.auth-box__link {
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.auth-box__link:hover {
+  text-decoration: underline;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.auth-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.auth-form__label {
+  font-family: "Satoshi", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+}
+.auth-form__input {
+  width: 100%;
+  background-color: rgb(240, 240, 240);
+  border: 1px solid transparent;
+  border-radius: 3.875rem;
+  padding: 1rem 1.5rem;
+  font-family: "Satoshi", sans-serif;
+  font-size: 1rem;
+  color: rgb(0, 0, 0);
+  outline: none;
+  transition: all 0.3s ease;
+}
+.auth-form__input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+.auth-form__input:focus {
+  border-color: rgba(0, 0, 0, 0.2);
+  background-color: rgb(255, 255, 255);
+}
+.auth-form__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Satoshi", sans-serif;
+  font-size: 0.875rem;
+}
+.auth-form__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.auth-form__checkbox-input {
+  accent-color: rgb(0, 0, 0);
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+.auth-form__checkbox-text {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 500;
+}
+.auth-form__link {
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  text-decoration: none;
+}
+.auth-form__link:hover {
+  text-decoration: underline;
+}
+.auth-form__submit {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  width: 100%;
+  border-radius: 3.875rem;
+  padding: 1rem 0;
+  margin-top: 0.75rem;
+  border: none;
+  cursor: pointer;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: opacity 0.3s ease;
+}
+.auth-form__submit:hover {
+  opacity: 0.8;
+}
+
+/*# sourceMappingURL=login.css.map */

@@ -1,25 +1,64 @@
 @use "_typography.scss" as *;
 @use "_functions.scss" as *;
-$font-primary: 'Integral CF', sans-serif;
-$font-secondary: 'Satoshi', sans-serif;
-$primary-black: rgb(0,0,0,1);
+
+
+
+$color-black: #000000;
+$color-white: #ffffff;
+$color-gray-text: #6b7280;
+$color-gray-light: #f0f0f0;
+$color-gray-border: #d9d9d9;
+$color-red: #ff3333;
+$color-green: #2ec4b6;
+
+$font-main: "Helvetica Neue", Arial, sans-serif;
+
+$container-width: 1240px;
+
+$radius-small: 6px;
+$radius-medium: 12px;
+$radius-large: 20px;
+$radius-round: 62px;
+
+$break-tablet: 900px;
+$break-mobile: 600px;
+$color-green:rgb(18, 198, 18);
+$radius-round:62px;
+$color-red: rgba(255, 51, 51, 1);
+$color-gray-light:rgba(0, 0, 0, 0.1);
+$radius-medium: 20px;
+$color-gray-border:rgba(0, 0, 0, 0.1);
+$color-gray-text:rgba(0, 0, 0, 0.6);
+$container-width:1440px;
+$radius-large: 20px;
+$font-primary: "Integral CF", sans-serif;
+$font-secondary: "Satoshi", sans-serif;
+$primary-black: rgb(0, 0, 0, 1);
 $primary-white: rgba(255, 255, 255, 1);
 $font-size-regular: 14px;
-$font-size-medium:16px;
-$font-size-large:32px;
-$font-desktop-large:64px;
+$font-size-medium: 16px;
+$font-size-large: 32px;
+$font-desktop-large: 64px;
 $font-weight-regular: 400;
-$font-weight-medium:500;
-$font-weight-bold:700;
-$space-between: 'space-between';
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+$space-between: "space-between";
 
-@mixin button-style{
-
+@mixin button-style {
   border-radius: convert(62);
-  border:none;
-
+  border: none;
 }
-@mixin sectional-heading{
+
+@mixin sectional-heading-desktop {
+  font-family:  $font-primary;
+  font-weight: $font-weight-bold;
+  font-size: 3rem;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+}
+@mixin sectional-heading {
   font-family: $font-primary;
   font-weight: $font-weight-bold;
   font-size: $font-size-large;
@@ -27,33 +66,32 @@ $space-between: 'space-between';
   vertical-align: middle;
 }
 
-@mixin regular-text{
+@mixin regular-text {
   font-size: $font-size-regular;
   font-family: $font-secondary;
   font-weight: 400;
   letter-spacing: 0;
-
 }
 
-@mixin medium-text{
+@mixin medium-text {
   font-family: $font-secondary;
   font-size: 16px;
   font-weight: $font-weight-medium;
-  letter-spacing:0;
+  letter-spacing: 0;
 }
-@mixin small-text{
+@mixin small-text {
   font-family: $font-secondary;
-  font-size:12px;
+  font-size: 12px;
 }
 
-@mixin flex-row($justify){
-  display:flex;
+@mixin flex-row($justify) {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-@mixin flex-column($justify){
-  display:flex;
+@mixin flex-column($justify) {
+  display: flex;
   flex-direction: column;
   justify-content: $justify;
 }

@@ -1,10 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SHOP.CO - Login</title>
+    <link rel="stylesheet" href="scss/main.css" />
 </head>
-<body>
+<body class="auth-body">
+    <main class="auth-page">
+        <div class="auth-box">
+            <a href="index.html" class="auth-box__brand">SHOP.CO</a>
+            
+            <h1 class="auth-box__title">Welcome Back</h1>
+            <p class="auth-box__subtitle">Please enter your details to sign in.</p>
 
+            <p class="auth-box__error" id="authError"></p>
+
+            <form class="auth-form" id="loginForm">
+                <div class="auth-form__group">
+                    <label for="emailInput" class="auth-form__label">Email Address</label>
+                    <input type="email" id="emailInput" class="auth-form__input" placeholder="admin@example.com" required>
+                </div>
+
+                <div class="auth-form__group">
+                    <label for="passwordInput" class="auth-form__label">Password</label>
+                    <input type="password" id="passwordInput" class="auth-form__input" placeholder="••••••••" required>
+                </div>
+
+                <div class="auth-form__actions">
+                    <label class="auth-form__checkbox">
+                        <input type="checkbox" class="auth-form__checkbox-input">
+                        <span class="auth-form__checkbox-text">Remember me</span>
+                    </label>
+                    <a href="#" class="auth-form__link">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="auth-form__submit">Log In</button>
+            </form>
+
+            <div class="auth-box__footer">
+                <p class="auth-box__footer-text">Don't have an account? <a href="#" class="auth-box__link">Sign up</a></p>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

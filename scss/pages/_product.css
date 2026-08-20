@@ -1,0 +1,109 @@
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-Regular.woff") format("woff");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-Bold.woff") format("woff");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("../assets/fonts/Satoshi-Medium.woff") format("woff");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Integral CF";
+  src: url("../assets/fonts/Fontspring-DEMO-integralcf-bold.otf") format("opentype");
+  font-weight: 700;
+  font-display: swap;
+}
+.product-container {
+  max-width: 77.5rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+.product-container .product-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .product-container .product-layout {
+    flex-direction: row;
+  }
+}
+.product-container .filters {
+  background: #f0f0f0;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .product-container .filters {
+    width: 18.4375rem;
+  }
+}
+.product-container .filters__list li {
+  padding: 0.625rem 0;
+  color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+.product-container .product-grid {
+  flex: 1;
+}
+.product-container .product-grid__items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
+  gap: 1.25rem;
+}
+.product-container .product-card {
+  cursor: pointer;
+}
+.product-container .product-card__img {
+  width: 100%;
+  border-radius: 1rem;
+  background: #f0eeed;
+}
+.product-container .product-card__name {
+  font-weight: 700;
+  margin-top: 0.75rem;
+}
+.product-container .product-card__price {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.product-container .product-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+}
+@media (min-width: 768px) {
+  .product-container .product-detail {
+    flex-direction: row;
+  }
+}
+.product-container .product-detail__gallery, .product-container .product-detail__info {
+  flex: 1;
+}
+.product-container .product-detail__main-img {
+  width: 100%;
+  background: #f0eeed;
+  border-radius: 1.25rem;
+}
+.product-container .product-detail__title {
+  font-size: 2.5rem;
+  font-family: "Integral CF", sans-serif;
+  font-weight: 900;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/*# sourceMappingURL=_product.css.map */

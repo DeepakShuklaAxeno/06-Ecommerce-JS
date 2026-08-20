@@ -2,6 +2,9 @@
 @use "layout/footer.scss";
 @use "abstracts/_typography.scss" as *;
 @use "pages/home-main.scss" as *;
+@use "pages/_cart.scss" as *;
+@use "pages/_login.scss" as *;
+@use "pages/_product.scss" as *;
 *{
   margin:0;
   padding:0;

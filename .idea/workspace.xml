@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f6bd4001-dfc8-4d24-b487-21213e28120d" name="Changes" comment="Minor ui fixes">
+      <change beforePath="$PROJECT_DIR$/scss/main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/scss/main.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/pages/home-main.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/scss/pages/home-main.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scss/pages/home-main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/scss/pages/home-main.scss" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;DeepakShuklaAxeno&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DeepakShuklaAxeno/06-Ecommerce-JS.git&quot;,
+    &quot;accountId&quot;: &quot;c0853e49-feff-43a3-a86d-4702855aa596&quot;
+  }
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0000002400769115" />
+      <entry key="MS500" value="1.0476218138567466" />
+      <entry key="S2" value="1.5840778550683754" />
+      <entry key="S5" value="2.161726076719999" />
+      <entry key="S10" value="2.510153362329704" />
+      <entry key="S30" value="2.81737897101446" />
+      <entry key="S60" value="2.906000181793037" />
+      <entry key="M2" value="2.952305379982695" />
+      <entry key="M5" value="2.9807524658309434" />
+      <entry key="M10" value="2.99034770173044" />
+      <entry key="M15" value="2.993558775553806" />
+      <entry key="M30" value="2.9967762036293615" />
+      <entry key="H1" value="2.9983873048988445" />
+      <entry key="H2" value="2.9991934531104834" />
+      <entry key="H4" value="2.9995966767067523" />
+      <entry key="D1" value="2.9999327725265563" />
+      <entry key="W1" value="2.999990395905626" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="0.0" />
+      <entry key="M2" value="0.0" />
+      <entry key="M5" value="0.0" />
+      <entry key="M10" value="0.0" />
+      <entry key="M15" value="0.0" />
+      <entry key="M30" value="0.0" />
+      <entry key="H1" value="0.0" />
+      <entry key="H2" value="0.0" />
+      <entry key="H4" value="0.0" />
+      <entry key="D1" value="0.0" />
+      <entry key="W1" value="0.0" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.06983046825063877" />
+      <entry key="MS500" value="0.6167074012621732" />
+      <entry key="S2" value="1.366433499400194" />
+      <entry key="S5" value="2.0093030207928573" />
+      <entry key="S10" value="2.410659962886428" />
+      <entry key="S30" value="2.776848169048506" />
+      <entry key="S60" value="2.8846341224167915" />
+      <entry key="M2" value="2.9413317009459186" />
+      <entry key="M5" value="2.97629116293759" />
+      <entry key="M10" value="2.988104901413046" />
+      <entry key="M15" value="2.9920608623360505" />
+      <entry key="M30" value="2.996025887188894" />
+      <entry key="H1" value="2.998011806095279" />
+      <entry key="H2" value="2.9990056184845706" />
+      <entry key="H4" value="2.999502738077969" />
+      <entry key="D1" value="2.9999171131270628" />
+      <entry key="W1" value="2.9999881587760213" />
+    </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3HpQOwhabwgHMYk3rAODzXcEA9v" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Axeno/Documents/GitHub/06-Ecommerce-JS&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;
+  }
+}</component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="C:\Users\Axeno\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="38852c6e-ab21-42a8-95a9-552116ba0ae5" reportId="06-Ecommerce-JS/qodana/2026-08-16" />
+    </option>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-WS-262.9437.145" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f6bd4001-dfc8-4d24-b487-21213e28120d" name="Changes" comment="" />
+      <created>1786562508317</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1786562508317</updated>
+      <workItem from="1786562511583" duration="208000" />
+      <workItem from="1786562762713" duration="46000" />
+      <workItem from="1786562835540" duration="17842000" />
+      <workItem from="1786638183606" duration="3662000" />
+      <workItem from="1786642828168" duration="7226000" />
+      <workItem from="1786650196186" duration="7041000" />
+      <workItem from="1786769071927" duration="594000" />
+      <workItem from="1786777105488" duration="5368000" />
+      <workItem from="1786820344781" duration="35687000" />
+      <workItem from="1786940074340" duration="1662000" />
+      <workItem from="1786941792827" duration="15400000" />
+      <workItem from="1786983379514" duration="6000" />
+      <workItem from="1787035021663" duration="15531000" />
+      <workItem from="1787075215878" duration="4000" />
+      <workItem from="1787108676082" duration="856000" />
+      <workItem from="1787153216255" duration="601000" />
+    </task>
+    <task id="LOCAL-00001" summary="Fixed footer mobile  view styling">
+      <option name="closed" value="true" />
+      <created>1786958867172</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1786958867172</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Minor ui fixes">
+      <option name="closed" value="true" />
+      <created>1787035193434</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1787035193434</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fixed footer mobile  view styling" />
+    <MESSAGE value="Minor ui fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor ui fixes" />
+  </component>
+</project>
