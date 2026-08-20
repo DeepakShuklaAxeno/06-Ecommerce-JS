@@ -1,23 +1,13 @@
-@use "layout/_header.scss";
-@use "layout/footer.scss";
-@use "abstracts/_typography.scss" as *;
-@use "pages/home-main.scss" as *;
-*{
-  margin:0;
-  padding:0;
-  box-sizing: border-box;
-  
-}
+@use "./abstracts/variables.scss" as *;
 
+@use "./base/reset.scss";
+@use "./base/typography.scss";
+@use "./base/global.scss";
 
+@use "./layout/header.scss";
+@use "./layout/footer.scss";
 
-
-a{
-  text-decoration: none;
-
-
-}
-
-li{
-  list-style: none;
-}
+@use "./pages/login.scss";
+@use "./pages/home.scss";
+@use "./pages/productDetail.scss";
+@use './pages/cart.scss';

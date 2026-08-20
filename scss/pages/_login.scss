@@ -1,0 +1,245 @@
+@use "../abstracts/variables.scss" as *;
+@use "../abstracts/mixins.scss" as *;
+
+.login {
+    min-height: 100vh;
+    background-color: $color-background-hero;
+    padding: 2rem 1rem;
+
+    @include flex-center;
+
+    &__container {
+        width: 100%;
+        max-width: 1100px;
+        min-height: 650px;
+
+        background-color: $color-background;
+        border-radius: 24px;
+        overflow: hidden;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            max-width: 520px;
+        }
+    }
+
+    &__content {
+        padding: 3rem 4rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @media (max-width: 768px) {
+            padding: 2.5rem 2rem;
+        }
+    }
+
+    &__brand {
+        font-family: "Integral CF";
+        font-size: 1.7rem;
+        font-weight: 900;
+        color: $color-dark;
+        margin-bottom: 5rem;
+
+        @media (max-width: 768px) {
+            margin-bottom: 3rem;
+        }
+    }
+
+    &__header {
+        margin-bottom: 2rem;
+    }
+
+    &__title {
+        font-family: "Integral CF";
+        font-size: 2.8rem;
+        line-height: 1.1;
+        font-weight: 900;
+        letter-spacing: -1px;
+        color: $color-dark;
+        margin-bottom: 1rem;
+
+        @media (max-width: 480px) {
+            font-size: 2.2rem;
+        }
+    }
+
+    &__description {
+        max-width: 420px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: $color-text-muted;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.4rem;
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    &__label-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: $color-dark;
+    }
+
+    &__forgot {
+        font-size: 0.8rem;
+        color: $color-text-muted;
+        text-decoration: underline;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: $color-dark;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        border: 1px solid $color-border-dark;
+        border-radius: 62px;
+        background-color: $color-background-soft;
+        padding: 1rem 1.2rem;
+
+        font-family: "Satoshi";
+        font-size: 0.95rem;
+
+        outline: none;
+
+        transition:
+            border-color 0.2s ease,
+            background-color 0.2s ease;
+
+        &::placeholder {
+            color: $color-text-faded;
+        }
+
+        &:focus {
+            border-color: $color-dark;
+            background-color: $color-background;
+        }
+    }
+
+    &__error {
+        min-height: 20px;
+        margin: -0.5rem 0 0;
+        font-size: 0.85rem;
+        color: $color-danger;
+    }
+
+    &__button {
+        @include button;
+
+        width: 100%;
+        padding: 1rem;
+
+        font-family: "Satoshi";
+        font-size: 1rem;
+        font-weight: 600;
+
+        transition:
+            background-color 0.2s ease,
+            transform 0.2s ease;
+
+        &:hover {
+            background-color: $color-text;
+            transform: translateY(-1px);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+
+    &__signup {
+        margin-top: 1.8rem;
+        text-align: center;
+        font-size: 0.9rem;
+        color: $color-text-muted;
+    }
+
+    &__signup-link {
+        color: $color-dark;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    &__visual {
+        position: relative;
+        min-height: 650px;
+        background-color: $color-background-hero;
+
+        @include flex-center;
+
+        overflow: hidden;
+
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+
+    &__visual-content {
+        position: relative;
+        max-width: 400px;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    &__visual-title {
+        position: relative;
+        z-index: 2;
+
+        font-family: "Integral CF";
+        font-size: 3.2rem;
+        line-height: 1.05;
+
+        color: $color-dark;
+        margin-bottom: 1.5rem;
+    }
+
+    &__visual-description {
+        position: relative;
+        z-index: 2;
+
+        font-size: 1rem;
+        line-height: 1.6;
+        color: $color-text-muted;
+    }
+
+    &__star {
+        position: absolute;
+        color: $color-dark;
+        z-index: 1;
+        line-height: 1;
+    }
+
+    &__star--large {
+        top: -70px;
+        right: -30px;
+        font-size: 7.5rem;
+    }
+
+    &__star--small {
+        bottom: -80px;
+        left: -30px;
+        font-size: 6.25rem;
+    }
+}
