@@ -1,30 +1,59 @@
-$color-dark : #000000;
-$color-white: #ffff;
-$color-dark: #000;
-$color-white: #fff;
+@use "_typography.scss" as *;
+@use "_functions.scss" as *;
+$font-primary: 'Integral CF', sans-serif;
+$font-secondary: 'Satoshi', sans-serif;
+$primary-black: rgb(0,0,0,1);
+$primary-white: rgba(255, 255, 255, 1);
+$font-size-regular: 14px;
+$font-size-medium:16px;
+$font-size-large:32px;
+$font-desktop-large:64px;
+$font-weight-regular: 400;
+$font-weight-medium:500;
+$font-weight-bold:700;
+$space-between: 'space-between';
 
-$color-text: #333;
-$color-text-muted: #666;
-$color-text-light: rgba(0, 0, 0, 0.6);
-$color-text-faded: rgba(0, 0, 0, 0.4);
+@mixin button-style{
 
-$color-background: #fff;
-$color-background-soft: #f0eeed;
-$color-background-hero: #f2f0f1;
-$color-background-gray: #f0f0f0;
+  border-radius: convert(62);
+  border:none;
 
-$color-border: rgba(0, 0, 0, 0.1);
-$color-border-dark: rgba(0, 0, 0, 0.15);
+}
+@mixin sectional-heading{
+  font-family: $font-primary;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-large;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
 
-$color-danger: #ff3333;
-$color-success: #01b763;
-$color-rating: #ffc633;
+@mixin regular-text{
+  font-size: $font-size-regular;
+  font-family: $font-secondary;
+  font-weight: 400;
+  letter-spacing: 0;
 
-$radius-card: 16px;
-$radius-pill : 64px;
+}
 
-$hover-color: #e0e0e0;
+@mixin medium-text{
+  font-family: $font-secondary;
+  font-size: 16px;
+  font-weight: $font-weight-medium;
+  letter-spacing:0;
+}
+@mixin small-text{
+  font-family: $font-secondary;
+  font-size:12px;
+}
 
-$default-selected : #4F4E37;
-$defaul-nonSelected1 : #314F4A;
-$defaul-nonSelected2 : #31344F;
+@mixin flex-row($justify){
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@mixin flex-column($justify){
+  display:flex;
+  flex-direction: column;
+  justify-content: $justify;
+}
