@@ -1,131 +1,43 @@
-const PRODUCTS = [
-  {
-    id: 1,
-    name: "One Life Graphic T-Shirt",
-    price: 260,
-    originalPrice: 300,
-    discount: "-40%",
-    rating: "★★★★☆",
-    score: "4.5/5",
-    image: "assets/main-shirt.png",
-    description:
-      "This graphic t-shirt is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
-    colors: ["Olive", "Green", "Navy"],
-    sizes: ["Small", "Medium", "Large", "X-Large"],
-  },
-  {
-    id: 2,
-    name: "T-shirt with Tape Details",
-    price: 120,
-    originalPrice: null,
-    discount: null,
-    rating: "★★★★☆",
-    score: "4.5/5",
-    image: "assets/image 7.png",
-    description:
-      "A relaxed fit t-shirt with contrast tape detailing on the sleeves, made from soft breathable cotton.",
+let PRODUCTS = [];
+
+function mapDummyProduct(item) {
+  const discountPercentage = item.discountPercentage || 0;
+  const hasDiscount = discountPercentage > 0;
+  const price = Math.round(item.price);
+  const originalPrice = hasDiscount ? Math.round(price / (1 - discountPercentage / 100)) : null;
+  const fullStars = Math.round(item.rating);
+
+  return {
+    id: item.id,
+    name: item.title,
+    price,
+    originalPrice,
+    discount: hasDiscount ? `-${Math.round(discountPercentage)}%` : null,
+    rating: "★".repeat(fullStars) + "☆".repeat(5 - fullStars),
+    score: `${item.rating}/5`,
+    image: item.thumbnail,
+    images: item.images && item.images.length ? item.images : [item.thumbnail],
+    description: item.description,
     colors: ["Black", "White", "Grey"],
     sizes: ["Small", "Medium", "Large", "X-Large"],
-  },
-  {
-    id: 3,
-    name: "Skinny Fit Jeans",
-    price: 240,
-    originalPrice: 260,
-    discount: "-20%",
-    rating: "★★★☆☆",
-    score: "3.5/5",
-    image: "assets/skinnyFit.png",
-    description:
-      "Slim through the hip and thigh with a skinny leg, these jeans are made from stretch denim for all day comfort.",
-    colors: ["Blue", "Black", "Grey"],
-    sizes: ["Small", "Medium", "Large", "X-Large"],
-  },
-  {
-    id: 4,
-    name: "Checkered Shirt",
-    price: 180,
-    originalPrice: null,
-    discount: null,
-    rating: "★★★★☆",
-    score: "4.5/5",
-    image: "assets/redbluechecked.png",
-    description:
-      "A classic checkered shirt with a comfortable regular fit, perfect for layering or wearing on its own.",
-    colors: ["Red", "Blue", "Green"],
-    sizes: ["Small", "Medium", "Large", "X-Large"],
-  },
-  {
-    id: 5,
-    name: "Sleeve Striped T-shirt",
-    price: 130,
-    originalPrice: 160,
-    discount: "-30%",
-    rating: "★★★★☆",
-    score: "4.5/5",
-    image: "assets/image 7.png",
-    description:
-      "A striped t-shirt with a comfortable regular fit, made from a soft cotton blend fabric.",
-    colors: ["Navy", "White", "Olive"],
-    sizes: ["Small", "Medium", "Large", "X-Large"],
-  },
-  {
-    id: 6,
-    name: "Vertical Striped Shirt",
-    price: 212,
-    originalPrice: 232,
-    discount: "-20%",
-    rating: "★★★★★",
-    score: "5.0/5",
-    image: "assets/image 7.png",
-    description:
-      "A vertical striped shirt with a tailored fit, made from breathable cotton for everyday wear.",
-    colors: ["Green", "Navy", "Black"],
-    sizes: ["Small", "Medium", "Large", "X-Large"],
-  },
-  {
-    id: 7,
-    name: "Courage Graphic T-shirt",
-    price: 145,
-    originalPrice: null,
-    discount: null,
-    rating: "★★★★☆",
-    score: "4.0/5",
-    image: "assets/image 7.png",
-    description:
-      "A graphic t-shirt with a bold print, made from a soft cotton fabric with a relaxed fit.",
-    colors: ["Black", "White"],
-    sizes: ["Small", "Medium", "Large", "X-Large"],
-  },
-  {
-    id: 8,
-    name: "Loose Fit Bermuda Shorts",
-    price: 80,
-    originalPrice: null,
-    discount: null,
-    rating: "★★★☆☆",
-    score: "3.0/5",
-    image: "assets/image 7.png",
-    description:
-      "Loose fit bermuda shorts made from lightweight cotton, ideal for warm days.",
-    colors: ["Khaki", "Black", "Navy"],
-    sizes: ["Small", "Medium", "Large", "X-Large"],
-  },
-  {
-    id: 9,
-    name: "Faded Skinny Jeans",
-    price: 210,
-    originalPrice: null,
-    discount: null,
-    rating: "★★★★☆",
-    score: "4.5/5",
-    image: "assets/skinnyFit.png",
-    description:
-      "Faded skinny jeans with a slim leg and stretch denim for a comfortable, flattering fit.",
-    colors: ["Blue", "Grey"],
-    sizes: ["Small", "Medium", "Large", "X-Large"],
-  },
-];
+  };
+}
+
+const CLOTHING_CATEGORIES = ["mens-shirts", "womens-dresses", "tops"];
+
+async function loadProducts() {
+  try {
+    const responses = await Promise.all(
+        CLOTHING_CATEGORIES.map((category) =>
+            fetch(`https://dummyjson.com/products/category/${category}`).then((res) => res.json())
+        )
+    );
+    const items = responses.flatMap((data) => data.products);
+    PRODUCTS = items.map(mapDummyProduct);
+  } catch (err) {
+    PRODUCTS = [];
+  }
+}
 
 const AUTH_KEY = "shopco_auth";
 const CART_KEY = "shopco_cart";
@@ -232,10 +144,10 @@ function renderStars(rating, score) {
 
 function renderProductCard(product) {
   const pricing = product.originalPrice
-    ? `<span class="product-card__price">$${product.price}</span>
+      ? `<span class="product-card__price">$${product.price}</span>
        <span class="product-card__price product-card__price--original">$${product.originalPrice}</span>
        <span class="product-card__discount">${product.discount}</span>`
-    : `<span class="product-card__price">$${product.price}</span>`;
+      : `<span class="product-card__price">$${product.price}</span>`;
 
   return `
     <a href="product.html?id=${product.id}" class="product-card__link">
@@ -278,8 +190,29 @@ function initProductPage() {
   }
 
   document.getElementById("breadcrumbCurrent").textContent = product.name;
-  document.getElementById("productImage").src = product.image;
+  document.getElementById("productImage").src = product.images[0];
   document.getElementById("productImage").alt = product.name;
+
+  const thumbsContainer = document.querySelector(".product-gallery__thumbnails");
+  thumbsContainer.innerHTML = product.images
+      .slice(0, 3)
+      .map(
+          (img, i) => `
+      <button class="product-gallery__thumb-btn${i === 0 ? " product-gallery__thumb-btn--active" : ""}" data-image="${img}">
+        <img src="${img}" alt="Thumbnail ${i + 1}" class="product-gallery__thumb-img">
+      </button>
+    `
+      )
+      .join("");
+
+  thumbsContainer.addEventListener("click", (e) => {
+    const btn = e.target.closest(".product-gallery__thumb-btn");
+    if (!btn) return;
+    thumbsContainer.querySelectorAll(".product-gallery__thumb-btn").forEach((el) => el.classList.remove("product-gallery__thumb-btn--active"));
+    btn.classList.add("product-gallery__thumb-btn--active");
+    document.getElementById("productImage").src = btn.dataset.image;
+  });
+
   document.getElementById("productTitle").textContent = product.name;
   document.getElementById("productStars").textContent = product.rating;
   document.getElementById("productScore").textContent = product.score;
@@ -301,21 +234,21 @@ function initProductPage() {
 
   const colorsContainer = document.getElementById("productColors");
   colorsContainer.innerHTML = product.colors
-    .map(
-      (color, i) => `
+      .map(
+          (color, i) => `
       <button class="color-swatch${i === 0 ? " color-swatch--active" : ""}" data-color="${color}" aria-label="${color}"></button>
     `
-    )
-    .join("");
+      )
+      .join("");
 
   const sizesContainer = document.getElementById("productSizes");
   sizesContainer.innerHTML = product.sizes
-    .map(
-      (size, i) => `
+      .map(
+          (size, i) => `
       <button class="size-pill${i === 0 ? " size-pill--active" : ""}" data-size="${size}">${size}</button>
     `
-    )
-    .join("");
+      )
+      .join("");
 
   let selectedColor = product.colors[0];
   let selectedSize = product.sizes[0];
@@ -416,8 +349,8 @@ function renderCartSummary(cart) {
 
   document.getElementById("cartSubtotal").textContent = "$" + subtotal;
   document.getElementById("cartDiscountLabel").textContent = couponCode
-    ? `Discount (-${discountRate * 100}%)`
-    : "Discount";
+      ? `Discount (-${discountRate * 100}%)`
+      : "Discount";
   document.getElementById("cartDiscount").textContent = "-$" + discountAmount;
   document.getElementById("cartDelivery").textContent = "$" + delivery;
   document.getElementById("cartTotal").textContent = "$" + total;
@@ -478,10 +411,26 @@ function initCartPage() {
 
   document.getElementById("checkoutBtn").addEventListener("click", () => {
     const cart = getCart();
+
     if (cart.length === 0) {
       alert("Your cart is empty. Add some products before checking out.");
       return;
     }
+
+    const validCart = cart.filter((item) => getProduct(item.id));
+    if (validCart.length !== cart.length) {
+      saveCart(validCart);
+      updateCartCount();
+      renderCart();
+    }
+    if (validCart.length === 0) {
+      alert("Some items in your cart are no longer available. Please add products again.");
+      return;
+    }
+
+    const totalText = document.getElementById("cartTotal").textContent;
+    document.querySelector("#successModal .modal__text").textContent =
+        `Your order has been placed successfully. Total charged: ${totalText}`;
     document.getElementById("successModal").classList.remove("hidden");
   });
 
@@ -517,7 +466,9 @@ if (document.getElementById("productOverview") || document.getElementById("cartL
   protectPage();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  await loadProducts();
+
   updateCartCount();
   updateAuthUI();
 

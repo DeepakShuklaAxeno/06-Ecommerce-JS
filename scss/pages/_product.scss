@@ -1,6 +1,5 @@
 @use "../abstracts/_variables.scss" as *;
 @use "../abstracts/_functions.scss" as *;
-
 .product-page {
   
   max-width: convert(1440);
@@ -589,6 +588,7 @@
 }
 
 .related-products {
+  display: none;
   .sectional-heading {
     margin-bottom: convert(40);
   }
