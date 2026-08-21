@@ -51,7 +51,8 @@ $color-red: #FF3333 !default;
 }
 
 .cart-list {
-  flex: 1; // Takes up all remaining space
+  flex: 1;
+
   border: 1px solid $color-gray-border;
   border-radius: 20px;
   padding: 24px;
@@ -171,7 +172,7 @@ $color-red: #FF3333 !default;
 
 .cart-summary {
   width: 100%;
-  max-width: 505px; // Matches Figma proportion
+  max-width: 505px;
   flex-shrink: 0;
   border: 1px solid $color-gray-border;
   border-radius: 20px;

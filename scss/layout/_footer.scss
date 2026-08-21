@@ -99,7 +99,7 @@
     display: flex;
     flex-direction: column;
     align-content: space-between;
-    gap: 24px;
+    width: stretch;
 
     .footer__brand {
       display: flex;
@@ -128,6 +128,8 @@
           @include regular-text;
           line-height: 20px;
           color: rgba(0, 0, 0, 0.6);
+
+
         }
       }
       .brand__socials {
@@ -143,14 +145,21 @@
         }
       }
       @media (min-width: 768px) {
+
         .footer__brand {
-          .footer__brand-intro {
+          gap:convert(35);
+          &-intro {
+            gap:convert(25);
             .footer__logo {
-              .footer__logo-header {
+              &-header {
                 font-size: convert(33.45);
                 color: $primary-black;
               }
             }
+            .footer__brand-description{
+              max-width:  convert(248);
+            }
+
           }
         }
       }
@@ -160,7 +169,7 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
       justify-content: space-between;
-      div {
+      &-group {
         text-align: left;
         display: flex;
         flex-direction: column;
@@ -188,13 +197,18 @@
         }
       }
       @media (min-width: 768px) {
-        grid-template-columns: repeat(4, 1fr);
-        div {
+        display: flex;
+        justify-content: space-between;
+        gap: convert(113.5);
+        &-group {
+          //flex:1;
+          flex-wrap: wrap;
+          width: max-content;
           ul {
             gap:convert(10);
             li {
               a {
-                
+                gap:convert(24);
                 font-size: $font-size-medium;
                 text-wrap-mode: nowrap;
                 line-height: convert(19px);
@@ -208,6 +222,7 @@
     @media (min-width: 768px) {
       flex-direction: row;
       justify-content: space-between;
+      gap:1.5rem;
       margin-top:convert(50);
     }
   }

@@ -70,8 +70,8 @@
                 <li class="header__nav-li">
                   <a href="product.html">Product</a>
                 </li>
-                <li class="header__nav-li"><a href="cart.html">Cart</a></li>
-                <li class="header__nav-li"><a href="login.html">Login</a></li>
+                <li class="header__nav-li"><a href="cart.html" >Cart</a></li>
+                <li class="header__nav-li"><a href="login.html" >Login</a></li>
               </ul>
             </nav>
             <div class="sidebar-overlay"></div>
@@ -129,7 +129,7 @@
                 />
               </svg>
             </a>
-            <a href="">
+            <a href="login.html" id="loginLink">
               <svg
                 width="24"
                 height="24"
@@ -152,6 +152,11 @@
       <div class="hero">
         <div class="hero__main">
           <div class="hero__banner">
+            <img
+                  src="assets/hero-image-background.png"
+                  class="hero__models-canvas-desktop"
+                  alt=""
+            />
             <div class="hero__main-content">
               <h2 class="hero__main-heading">
                 FIND CLOTHES THAT MATCHES YOUR STYLE
@@ -181,13 +186,12 @@
                 </div>
               </div>
             </div>
-            <img
-              src="assets/hero-image-background.png"
-              class="hero__models-canvas-desktop"
-              alt=""
-            />
+
             <div class="hero__image-area">
-              
+
+              <svg class = "small-star" width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M28 0C28.9506 15.0527 40.9472 27.0495 56 28C40.9472 28.9506 28.9506 40.9472 28 56C27.0495 40.9472 15.0527 28.9506 0 28C15.0527 27.0495 27.0495 15.0527 28 0Z" fill="black"/>
+              </svg>
 
               <svg
                 class="big-star"
@@ -605,8 +609,8 @@
               </li>
             </ul>
           </div>
-          <div class="help">
-            <h3>HELP</h3>
+          <div class="footer__nav-group help">
+            <h3 class="nav-group-header">HELP</h3>
             <ul>
               <li>
                 <a href=""> Customer Support </a>
@@ -622,8 +626,8 @@
               </li>
             </ul>
           </div>
-          <div class="faq">
-            <h3>FAQ</h3>
+          <div class="footer__nav-group faq">
+            <h3 class="nav-group-header" >FAQ</h3>
             <ul>
               <li><a href="">Account</a></li>
               <li><a href="">Manage Deliveries</a></li>
@@ -631,8 +635,8 @@
               <li><a href="">Payments</a></li>
             </ul>
           </div>
-          <div class="resources">
-            <h3>RESOURCES</h3>
+          <div class="footer__nav-group resources">
+            <h3 class="nav-group-header">RESOURCES</h3>
             <ul>
               <li><a href="">Free eBooks</a></li>
               <li><a href="">Development Tutorial</a></li>
