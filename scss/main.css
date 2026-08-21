@@ -760,7 +760,7 @@
 }
 @media (min-width: 768px) {
   .home-main .product-catalogue {
-    padding: 6.25rem;
+    padding: 0 6.25rem;
   }
 }
 .home-main .sectional-heading {
@@ -1393,7 +1393,50 @@
   }
 }
 .modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 999;
+}
+.modal-overlay.hidden {
   display: none;
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 32px 24px;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+.modal__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #2ecc71;
+  color: #fff;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+.modal__title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.modal__text {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 24px;
+  line-height: 1.5;
 }
 
 .auth-body {
@@ -2133,6 +2176,9 @@
   }
 }
 
+.related-products {
+  display: none;
+}
 .related-products .sectional-heading {
   margin-bottom: 2.5rem;
 }
