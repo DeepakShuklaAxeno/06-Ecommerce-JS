@@ -232,7 +232,7 @@
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     flex-direction: column;
     align-items: center;
-    gap: convert(16);
+    width: 100%;
 
     .footer__copyright {
       @include regular-text;
@@ -253,7 +253,7 @@
       justify-content: space-between;
       align-items: center;
       margin-top:convert(50);
-      gap:convert(690);
+      //gap:convert(690);
       .footer__copyright{
         text-wrap-mode: nowrap;
       }

@@ -511,7 +511,7 @@
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  width: 100%;
 }
 .footer .footer__bottom .footer__copyright {
   font-size: 14px;
@@ -533,7 +533,6 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 3.125rem;
-    gap: 43.125rem;
   }
   .footer .footer__bottom .footer__copyright {
     text-wrap-mode: nowrap;
@@ -543,30 +542,33 @@
 .home-main {
   margin-bottom: 8.4375rem;
   position: relative;
-  overflow-x: clip;
 }
 .home-main .hero .hero__main {
+  position: relative;
   display: flex;
   background-color: rgb(242, 240, 241);
   justify-content: center;
-  max-width: 77.75rem;
+  width: 100%;
   flex-direction: column;
   padding-top: 2.5rem;
 }
 .home-main .hero .hero__main .hero__banner {
+  min-width: 0;
   display: flex;
   position: relative;
   flex-direction: column;
   max-width: 90rem;
+  width: 100%;
 }
 .home-main .hero .hero__main .hero__banner .hero__models-canvas-desktop {
   display: none;
 }
 @media (min-width: 768px) {
   .home-main .hero .hero__main .hero__banner .hero__models-canvas-desktop {
+    max-width: 100%;
+    height: auto;
     display: flex;
     position: absolute;
-    width: inherit;
     top: 0;
     left: 0;
     right: 0;
@@ -696,18 +698,23 @@
 }
 .home-main .hero .hero__main .hero__banner .hero__image-area {
   background-color: transparent;
+  overflow: hidden;
 }
 .home-main .hero .hero__main .hero__banner .hero__image-area .small-star {
+  z-index: 2;
   position: absolute;
   left: 1.6875rem;
   top: 8.5625rem;
 }
 .home-main .hero .hero__main .hero__banner .hero__image-area .big-star {
+  z-index: 2;
   position: absolute;
   left: 18.3125rem;
   top: 2.5rem;
 }
 .home-main .hero .hero__main .hero__banner .hero__image-area .hero__bg-models-mobile {
+  width: 100%;
+  max-width: 100%;
   height: auto;
   margin: 0;
   padding: 0;
@@ -715,11 +722,11 @@
 @media (min-width: 768px) {
   .home-main .hero .hero__main .hero__banner .hero__image-area .big-star {
     top: 5.375rem;
-    left: 78.4375rem;
+    left: 72.1875rem;
   }
   .home-main .hero .hero__main .hero__banner .hero__image-area .small-star {
     top: 18.5625rem;
-    left: 46.875rem;
+    left: 40.625rem;
   }
   .home-main .hero .hero__main .hero__banner .hero__image-area .hero__bg-models-mobile {
     display: none;
@@ -738,7 +745,6 @@
   }
 }
 .home-main .hero .hero__main .hero__main-luxury {
-  width: stretch;
   background-color: rgb(0, 0, 0);
   display: flex;
   flex-direction: row;
@@ -751,7 +757,6 @@
 }
 @media (min-width: 768px) {
   .home-main .hero .hero__main .hero__main-luxury {
-    width: stretch;
     flex-wrap: nowrap;
     gap: 6.625rem;
     margin: 4.3125rem 0;
@@ -760,7 +765,7 @@
 }
 @media (min-width: 768px) {
   .home-main .product-catalogue {
-    padding: 0 6.25rem;
+    padding: 6.25rem;
   }
 }
 .home-main .sectional-heading {
@@ -2192,6 +2197,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 a {

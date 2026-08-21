@@ -4,33 +4,36 @@
 .home-main {
   margin-bottom: convert(135);
   position: relative;
-  overflow-x: clip;
 
 
   .hero {
 
     .hero__main {
+      position: relative;
       display: flex;
       background-color: rgba(242, 240, 241, 1);
       justify-content: center;
-      max-width: convert(1244);
+      width: 100%;
       flex-direction: column;
       padding-top: convert(40);
 
 
       .hero__banner {
+        min-width: 0;
         display: flex;
         position:relative;
 
         flex-direction: column;
         max-width: convert(1440);
+        width: 100%;
 
         .hero__models-canvas-desktop {
         display: none;
         @media (min-width: 768px) {
+          max-width: 100%;
+          height: auto;
           display: flex;
           position: absolute;
-          width:inherit;
           top: 0;
           left: 0;
           right:0;
@@ -161,19 +164,24 @@
 
         .hero__image-area {
           background-color: transparent;
+          overflow: hidden;
           .small-star {
+            z-index:2;
             position: absolute;
             left: convert(27);
             top: convert(137);
           }
 
           .big-star {
+            z-index: 2;
             position: absolute;
             left: convert(293);
             top: convert(40);
           }
 
           .hero__bg-models-mobile {
+            width:100%;
+            max-width: 100%;
             height:auto;
             margin: 0;
             padding: 0;
@@ -183,11 +191,11 @@
 
             .big-star {
               top: convert(86);
-              left: convert(1255);
+              left: convert(1155);
             }
             .small-star {
               top: convert(297);
-              left: convert(750);
+              left: convert(650);
             }
             .hero__bg-models-mobile {
               display: none;
@@ -204,7 +212,6 @@
         background-color: transparent;
       }
       .hero__main-luxury {
-        width: stretch;
         background-color: $primary-black;
         display: flex;
         flex-direction: row;
@@ -215,7 +222,7 @@
         gap: convert(34);
         flex-wrap: wrap;
         @media (min-width: 768px) {
-          width: stretch;
+
           flex-wrap: nowrap;
           gap:convert(106);
           margin: convert(69) 0;
@@ -228,7 +235,7 @@
   .product-catalogue{
 
     @media (min-width: 768px) {
-      padding:0 convert(100);
+      padding: convert(100);
     }
   }
 
@@ -428,7 +435,7 @@
       gap: convert(16);
 
       @media (min-width: 768px) {
-        grid-template-columns: repeat(12, 1fr);
+        grid-template-columns: repeat(12, 1fr); // 12-column grid for precise width control
         gap: convert(20);
       }
     }
@@ -546,7 +553,7 @@
 
 
     @media (min-width: 768px) {
-      flex: 0 0 calc(33.333% - 14px);
+      flex: 0 0 calc(33.333% - 14px); // Shows 3 cards cleanly
     }
 
     &__stars {
@@ -570,7 +577,7 @@
     }
 
     &__verified {
-      color: #00C853;
+      color: #00C853; // Green checkmark
       font-size: convert(14);
     }
 
