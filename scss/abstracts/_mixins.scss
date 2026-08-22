@@ -1,0 +1,56 @@
+@use "variables.scss" as *;
+
+@mixin button-style {
+  border-radius: $radius-round;
+  border: none;
+}
+
+@mixin sectional-heading-desktop {
+  font-family:  $font-primary;
+  font-weight: $font-weight-bold;
+  font-size: convert(48);
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  transform: translateY(-1rem);
+}
+@mixin sectional-heading {
+  font-family: $font-primary;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-large;
+  letter-spacing: 0;
+  vertical-align: middle;
+  transform: translateY(-1rem);
+
+}
+
+@mixin regular-text {
+  font-size: $font-size-regular;
+  font-family: $font-secondary;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@mixin medium-text {
+  font-family: $font-secondary;
+  font-size: 16px;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0;
+}
+@mixin small-text {
+  font-family: $font-secondary;
+  font-weight: $font-weight-regular;
+  font-size: $font-size-small;
+}
+
+@mixin flex-row($justify) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@mixin flex-column($justify) {
+  display: flex;
+  flex-direction: column;
+  justify-content: $justify;
+}

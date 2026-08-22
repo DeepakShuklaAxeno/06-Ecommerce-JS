@@ -1,6 +1,6 @@
 @use "../abstracts/_variables.scss" as *;
 @use "../abstracts/_functions" as *;
-
+@use "../abstracts/_mixins.scss" as *;
 .footer {
   background-color: rgba(240, 240, 240, 1);
   display: flex;
@@ -9,6 +9,7 @@
   align-items: center;
   text-align: center;
   width: 100%;
+  gap:convert(30);
   padding: 0 convert(17);
 
   .footer__subscribe {
@@ -25,8 +26,8 @@
       font-family: $font-primary;
       transform: translateY(-3);
       font-weight: 700;
-      font-size: 32px;
-      line-height: 35px;
+      font-size: 2rem;
+      line-height: convert(35);
       letter-spacing: 0;
       color: $primary-white;
     }
@@ -95,11 +96,12 @@
     }
   }
   .footer__main {
-    margin-top: convert(32);
+    
     display: flex;
     flex-direction: column;
     align-content: space-between;
-    width: stretch;
+    width: 100%;
+    gap:1.5rem;
 
     .footer__brand {
       display: flex;
@@ -128,8 +130,6 @@
           @include regular-text;
           line-height: 20px;
           color: rgba(0, 0, 0, 0.6);
-
-
         }
       }
       .brand__socials {
@@ -145,21 +145,19 @@
         }
       }
       @media (min-width: 768px) {
-
         .footer__brand {
-          gap:convert(35);
+          gap: convert(35);
           &-intro {
-            gap:convert(25);
+            gap: convert(25);
             .footer__logo {
               &-header {
                 font-size: convert(33.45);
                 color: $primary-black;
               }
             }
-            .footer__brand-description{
-              max-width:  convert(248);
+            .footer__brand-description {
+              max-width: convert(248);
             }
-
           }
         }
       }
@@ -167,13 +165,13 @@
     .footer__nav {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      gap: 1.5rem;
       justify-content: space-between;
       &-group {
         text-align: left;
         display: flex;
         flex-direction: column;
-        gap: convert(16);
+        gap: 1rem;
 
         h3 {
           font-family: $font-secondary;
@@ -205,14 +203,13 @@
           flex-wrap: wrap;
           width: max-content;
           ul {
-            gap:convert(10);
+            gap: convert(10);
             li {
               a {
-                gap:convert(24);
+                gap: convert(24);
                 font-size: $font-size-medium;
                 text-wrap-mode: nowrap;
                 line-height: convert(19px);
-                
               }
             }
           }
@@ -222,17 +219,19 @@
     @media (min-width: 768px) {
       flex-direction: row;
       justify-content: space-between;
-      gap:1.5rem;
-      margin-top:convert(50);
+      gap: 1.5rem;
+      margin-top: convert(50);
     }
   }
   .footer__bottom {
     display: flex;
-    padding-top: convert(16);
+    padding: 1rem 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     flex-direction: column;
     align-items: center;
     width: 100%;
+    gap:1rem;
+    margin-top:convert(10);
 
     .footer__copyright {
       @include regular-text;
@@ -240,21 +239,50 @@
     }
     .footer__payments {
       ul {
+        width:100%;
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap:0.75rem;
+        width:convert(240);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+          display: flex;
+          align-items: center;
+          margin: 0;
+          padding: 0;
+          a {
+            .payment-container {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: convert(39);
+              height: convert(25);
+              background-color: rgba(255, 255, 255, 1);
+              border-radius: convert(4.61);
+              border: convert(0.19) solid rgba(214, 220, 229, 1);
+              box-shadow: 0px 0.38px 3.84px 0px rgba(183, 183, 183, 0.08);
+
+              box-shadow: 0px 3.84px 7.68px 0px rgba(183, 183, 183, 0.08);
+            }
+          }
+        }
       }
     }
   }
   @media (min-width: 768px) {
     padding: 0 convert(100);
 
-    .footer__bottom{
+    .footer__bottom {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      margin-top:convert(50);
-      //gap:convert(690);
-      .footer__copyright{
+      margin-top: convert(50);
+
+      .footer__copyright {
         text-wrap-mode: nowrap;
       }
     }

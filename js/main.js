@@ -1,43 +1,191 @@
-let PRODUCTS = [];
-
-function mapDummyProduct(item) {
-  const discountPercentage = item.discountPercentage || 0;
-  const hasDiscount = discountPercentage > 0;
-  const price = Math.round(item.price);
-  const originalPrice = hasDiscount ? Math.round(price / (1 - discountPercentage / 100)) : null;
-  const fullStars = Math.round(item.rating);
-
-  return {
-    id: item.id,
-    name: item.title,
-    price,
-    originalPrice,
-    discount: hasDiscount ? `-${Math.round(discountPercentage)}%` : null,
-    rating: "★".repeat(fullStars) + "☆".repeat(5 - fullStars),
-    score: `${item.rating}/5`,
-    image: item.thumbnail,
-    images: item.images && item.images.length ? item.images : [item.thumbnail],
-    description: item.description,
-    colors: ["Black", "White", "Grey"],
-    sizes: ["Small", "Medium", "Large", "X-Large"],
-  };
-}
-
-const CLOTHING_CATEGORIES = ["mens-shirts", "womens-dresses", "tops"];
-
-async function loadProducts() {
-  try {
-    const responses = await Promise.all(
-        CLOTHING_CATEGORIES.map((category) =>
-            fetch(`https://dummyjson.com/products/category/${category}`).then((res) => res.json())
-        )
-    );
-    const items = responses.flatMap((data) => data.products);
-    PRODUCTS = items.map(mapDummyProduct);
-  } catch (err) {
-    PRODUCTS = [];
+let PRODUCTS = [
+  {
+    "id": 1,
+    "title": "T-shirt with Tape Details",
+    "category": "T-Shirts",
+    "price": 120,
+    "originalPrice": null,
+    "discountPercentage": 0,
+    "rating": 4.5,
+    "reviewCount": 96,
+    "images": ["assets/blackTshirt.png","assets/blackTshirt.png","assets/blackTshirt.png","assets/blackTshirt.png"],
+    "colors": ["Black", "White", "Navy Blue"],
+    "sizes": ["Small", "Medium", "Large", "X-Large"],
+"description": "A stylish and comfortable everyday piece designed for a modern wardrobe.","section": "new-arrivals"
+  },
+  {
+    "id": 2,
+    "title": "Skinny Fit Jeans",
+    "category": "Jeans",
+    "price": 240,
+    "originalPrice": 260,
+    "discountPercentage": 20,
+    "rating": 3.5,
+    "reviewCount": 72,
+    "images": ["assets/skinnyFitJeans.png","assets/skinnyFitJeans.png","assets/skinnyFitJeans.png","assets/skinnyFitJeans.png"],
+    "colors": ["Blue", "Light Blue", "Black"],
+    "sizes": ["Small", "Medium", "Large", "X-Large"],
+"description": "A stylish and comfortable everyday piece designed for a modern wardrobe.","section": "new-arrivals"
+  },
+  {
+    "id": 3,
+    "title": "Checkered Shirt",
+    "category": "Shirts",
+    "price": 180,
+    "originalPrice": null,
+    "discountPercentage": 0,
+    "rating": 4.5,
+    "reviewCount": 124,
+    "images": ["assets/checkedShirt.png","assets/checkedShirt.png","assets/checkedShirt.png","assets/checkedShirt.png"],
+    "colors": ["Red", "Navy Blue", "Green", "Black"],
+    "sizes": ["Small", "Medium", "Large", "X-Large"],
+"description": "A stylish and comfortable everyday piece designed for a modern wardrobe.","section": "new-arrivals"
+  },
+  {
+    "id": 4,
+    "title": "Sleeve Striped T-shirt",
+    "category": "T-Shirts",
+    "price": 130,
+    "originalPrice": 160,
+    "discountPercentage": 30,
+    "rating": 4.5,
+    "reviewCount": 89,
+    "images": ["assets/stripedTshirt.png","assets/stripedTshirt.png","assets/stripedTshirt.png","assets/stripedTshirt.png"],
+    "colors": ["Orange", "Black", "White"],
+    "sizes": ["Small", "Medium", "Large", "X-Large"],
+"description": "A stylish and comfortable everyday piece designed for a modern wardrobe.","section": "new-arrivals"
+  },
+  {
+    "id": 5,
+    "title": "Vertical Striped Shirt",
+    "category": "Shirts",
+    "price": 212,
+    "originalPrice": 232,
+    "discountPercentage": 20,
+    "rating": 5.0,
+    "reviewCount": 203,
+    "images": ["assets/blackStripedTshirt.png","assets/blackStripedTshirt.png","assets/blackStripedTshirt.png","assets/blackStripedTshirt.png"],
+    "colors": ["Green", "Black", "White", "Navy Blue"],
+    "sizes": ["Small", "Medium", "Large", "X-Large"],
+"description": "A stylish and comfortable everyday piece designed for a modern wardrobe.","section": "top-selling"
+  },
+  {
+    "id": 6,
+    "title": "Courage Graphic T-shirt",
+    "category": "T-Shirts",
+    "price": 145,
+    "originalPrice": null,
+    "discountPercentage": 0,
+    "rating": 4.0,
+    "reviewCount": 156,
+    "images": ["assets/orangeTshirt.png","assets/orangeTshirt.png","assets/orangeTshirt.png","assets/orangeTshirt.png"],
+    "colors": ["Orange", "Black", "White"],
+    "sizes": ["Small", "Medium", "Large", "X-Large"],
+"description": "A stylish and comfortable everyday piece designed for a modern wardrobe.","section": "top-selling"
+  },
+  {
+    "id": 7,
+    "title": "Loose Fit Bermuda Shorts",
+    "category": "Shorts",
+    "price": 80,
+    "originalPrice": null,
+    "discountPercentage": 0,
+    "rating": 3.0,
+    "reviewCount": 64,
+    "images": ["assets/denimShorts.png","assets/denimShorts.png","assets/denimShorts.png","assets/denimShorts.png"],
+    "colors": ["Blue", "Light Blue", "Black"],
+    "sizes": ["Small", "Medium", "Large", "X-Large"],
+"description": "A stylish and comfortable everyday piece designed for a modern wardrobe.","section": "top-selling"
+  },
+  {
+    "id": 8,
+    "title": "Faded Skinny Jeans",
+    "category": "Jeans",
+    "price": 210,
+    "originalPrice": null,
+    "discountPercentage": 0,
+    "rating": 4.5,
+    "reviewCount": 187,
+    "images": ["assets/fadedSkinnyJeans.png","assets/fadedSkinnyJeans.png","assets/fadedSkinnyJeans.png","assets/fadedSkinnyJeans.png"],
+    "colors": ["Black", "Dark Gray", "Blue"],
+    "sizes": ["Small", "Medium", "Large", "X-Large"],
+"description": "A stylish and comfortable everyday piece designed for a modern wardrobe.","section": "top-selling"
+  },
+  {
+    "id": 9,
+    "title": "Polo with Contrast Trims",
+    "category": "Polo",
+    "price": 212,
+    "originalPrice": 242,
+    "discountPercentage": 20,
+    "rating": 4.5,
+    "reviewCount": 115,
+    "images": ["assets/poloTshirt.png","assets/poloTshirt.png","assets/poloTshirt.png","assets/poloTshirt.png"],
+    "colors": ["Blue", "White", "Black", "Gray"],
+    "sizes": ["Small", "Medium", "Large", "X-Large"],
+"description": "A stylish and comfortable everyday piece designed for a modern wardrobe.","section": "you-might-also-like"
+  },
+  {
+    "id": 10,
+    "title": "Gradient Graphic T-shirt",
+    "category": "T-Shirts",
+    "price": 145,
+    "originalPrice": null,
+    "discountPercentage": 0,
+    "rating": 3.5,
+    "reviewCount": 91,
+    "images": ["assets/gradientGraphicTshirt.png","assets/gradientGraphicTshirt.png","assets/gradientGraphicTshirt.png","assets/gradientGraphicTshirt.png"],
+    "colors": ["White", "Pink", "Blue", "Purple"],
+    "sizes": ["Small", "Medium", "Large", "X-Large"],
+"description": "A stylish and comfortable everyday piece designed for a modern wardrobe.","section": "you-might-also-like"
+  },
+  {
+    "id": 11,
+    "title": "Polo with Tipping Details",
+    "category": "Polo",
+    "price": 180,
+    "originalPrice": null,
+    "discountPercentage": 0,
+    "rating": 4.5,
+    "reviewCount": 143,
+    "images": ["assets/poloBrownTshirt.png","assets/poloBrownTshirt.png","assets/poloBrownTshirt.png","assets/poloBrownTshirt.png"],
+    "colors": ["Brown", "Burgundy", "Black", "Navy Blue"],
+    "sizes": ["Small", "Medium", "Large", "X-Large"],
+"description": "A stylish and comfortable everyday piece designed for a modern wardrobe.","section": "you-might-also-like"
+  },
+  {
+    "id": 12,
+    "title": "Black Striped T-shirt",
+    "category": "T-Shirts",
+    "price": 120,
+    "originalPrice": 150,
+    "discountPercentage": 30,
+    "rating": 5.0,
+    "reviewCount": 231,
+    "images": ["assets/blackStripedTshirt.png","assets/blackStripedTshirt.png","assets/blackStripedTshirt.png"],
+    "colors": ["Black", "White", "Gray"],
+    "sizes": ["Small", "Medium", "Large", "X-Large"],
+"description": "A stylish and comfortable everyday piece designed for a modern wardrobe.","section": "you-might-also-like"
+  },
+  {
+    "id": 13,
+    "title": "One Life Graphic T-Shirt",
+    "category": "T-Shirts",
+    "price": 300,
+    "originalPrice": 500,
+    "discountPercentage": 40,
+    "rating": 4.5,
+    "reviewCount": 231,
+    "images": ["assets/cartimage1.png","assets/cartimage2.png","assets/cartimage3.png","assets/cartimage4.png"],
+    "colors": ["Black", "White", "Red"],
+    "sizes": ["Small", "Medium", "Large", "X-Large"],
+"description": "A stylish and comfortable everyday piece designed for a modern wardrobe.","section": "you-might-also-like"
   }
-}
+];
+
+
+
+
 
 const AUTH_KEY = "shopco_auth";
 const CART_KEY = "shopco_cart";
@@ -144,24 +292,54 @@ function renderStars(rating, score) {
 
 function renderProductCard(product) {
   const pricing = product.originalPrice
-      ? `<span class="product-card__price">$${product.price}</span>
-       <span class="product-card__price product-card__price--original">$${product.originalPrice}</span>
-       <span class="product-card__discount">${product.discount}</span>`
-      : `<span class="product-card__price">$${product.price}</span>`;
+    ? `
+      <span class="product-card__price">$${product.price}</span>
+      <span class="product-card__price product-card__price--original">
+        $${product.originalPrice}
+      </span>
+      <span class="product-card__discount">
+        -${product.discountPercentage}%
+      </span>
+    `
+    : `
+      <span class="product-card__price">$${product.price}</span>
+    `;
+
+  const fullStars = Math.round(product.rating);
+
+  const stars =
+    "★".repeat(fullStars) +
+    "☆".repeat(5 - fullStars);
 
   return `
     <a href="product.html?id=${product.id}" class="product-card__link">
       <article class="product-card">
+
         <div class="product-card__image-wrap">
-          <img src="${product.image}" alt="${product.name}">
+          <img
+            src="${product.images[0]}"
+            alt="${product.name}"
+          >
         </div>
-        <h3 class="product-card__title">${product.name}</h3>
+
+        <h3 class="product-card__title">
+          ${product.name}
+        </h3>
+
         <div class="product-card__rating">
-          ${renderStars(product.rating, product.score)}
+          <span class="product-card__rating-stars">
+            ${stars}
+          </span>
+
+          <span class="product-card__rating-score">
+            ${product.rating}/5
+          </span>
         </div>
+
         <div class="product-card__pricing">
           ${pricing}
         </div>
+
       </article>
     </a>
   `;
@@ -174,8 +352,8 @@ function renderProductGrid(containerId, products) {
 }
 
 function initHomePage() {
-  renderProductGrid("newArrivalsGrid", PRODUCTS.slice(0, 4));
-  renderProductGrid("topSellingGrid", PRODUCTS.slice(4, 8));
+  renderProductGrid("newArrivalsGrid", PRODUCTS.slice(0, 6));
+  renderProductGrid("topSellingGrid", PRODUCTS.slice(7,11));
 }
 
 function initProductPage() {
@@ -189,9 +367,9 @@ function initProductPage() {
     return;
   }
 
-  document.getElementById("breadcrumbCurrent").textContent = product.name;
+  document.getElementById("breadcrumbCurrent").textContent = product.title;
   document.getElementById("productImage").src = product.images[0];
-  document.getElementById("productImage").alt = product.name;
+  document.getElementById("productImage").alt = product.title;
 
   const thumbsContainer = document.querySelector(".product-gallery__thumbnails");
   thumbsContainer.innerHTML = product.images
@@ -213,7 +391,7 @@ function initProductPage() {
     document.getElementById("productImage").src = btn.dataset.image;
   });
 
-  document.getElementById("productTitle").textContent = product.name;
+  document.getElementById("productTitle").textContent = product.title;
   document.getElementById("productStars").textContent = product.rating;
   document.getElementById("productScore").textContent = product.score;
   document.getElementById("productPrice").textContent = "$" + product.price;
@@ -293,12 +471,12 @@ function renderCartItem(item) {
   return `
     <article class="cart-item" data-id="${item.id}">
       <div class="cart-item__image-wrap">
-        <img src="${product.image}" alt="${product.name}" class="cart-item__image">
+        <img src="${product.images}" alt="${product.title}" class="cart-item__image">
       </div>
       <div class="cart-item__details">
         <div class="cart-item__top">
           <div>
-            <h3 class="cart-item__title">${product.name}</h3>
+            <h3 class="cart-item__title">${product.title}</h3>
             <p class="cart-item__attribute">Size: <span class="cart-item__attribute-val">${item.size}</span></p>
             <p class="cart-item__attribute">Color: <span class="cart-item__attribute-val">${item.color}</span></p>
           </div>
@@ -467,7 +645,7 @@ if (document.getElementById("productOverview") || document.getElementById("cartL
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-  await loadProducts();
+ 
 
   updateCartCount();
   updateAuthUI();
@@ -476,4 +654,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (document.getElementById("newArrivalsGrid")) initHomePage();
   if (document.getElementById("productOverview")) initProductPage();
   if (document.getElementById("cartList")) initCartPage();
+  document.querySelectorAll('*').forEach(el => {
+  if (el.scrollWidth > document.documentElement.clientWidth) {
+    console.log(el, el.scrollWidth);
+  }
 });
+});document.querySelector('.reviews__arrow--next').addEventListener('click', () => {
+  grid.scrollBy({ left: 300, behavior: 'smooth' });
+});
+

@@ -1,43 +1,42 @@
 @use "../abstracts/_variables.scss" as *;
 @use "../abstracts/_functions" as *;
-
+@use "../abstracts/_mixins.scss" as *;
 
 .header {
-  height: convert(98);
   display: flex;
   flex-direction: column;
-  //width: 100%;
+  width: 100%;
 
   .header__promo {
+    
     display: flex;
-    justify-content: center;
     align-items: center;
-    align-content: center;
+    justify-content: center;
     background-color: $primary-black;
-    color: $primary-white;
-    font-family: "Satoshi", sans-serif;
-    height: convert(34);
-    font-size: convert(12);
-    //max-width: 100%;
-    padding: convert(9) 0;
-
+    
+    padding: convert(10) 0;
 
     .header__signup-text {
+      color: $primary-white;
+      @include small-text;
       display: flex;
+      flex-direction: row;
       align-items: center;
       justify-content: center;
-
-      p {
-        text-align: center;
-        font-weight: 400;
-
-        a {
-          font-family: $font-secondary;
-          font-size: 14px;
-          font-weight: 500;
-          color: $primary-white;
-          text-decoration: underline;
-        }
+      gap:convert(8);
+      .normal-text{
+       
+        text-wrap-mode: nowrap;
+      }
+      .signup__link {
+        font-weight: $font-weight-medium;
+        text-decoration: underline;
+        color:$primary-white;
+        
+      }
+      @media (min-width: $break-desktop) {
+        @include regular-text;
+        
       }
     }
 
@@ -48,18 +47,15 @@
       position: absolute;
       right: convert(103.44);
       top: convert(12.43);
-
     }
 
-    @media(min-width: convert(786)) {
+    @media (min-width: convert(786)) {
       .header__promo-close {
         display: block;
       }
       .header__promo {
         font-size: convert(14);
       }
-
-
     }
   }
 
@@ -67,8 +63,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: convert(64);
-    padding: 0 convert(16);
+    padding: 1.25rem 1rem;
 
     .header__main {
       display: flex;
@@ -225,52 +220,46 @@
     }
 
     @media (min-width: convert(768)) {
-      padding:convert(24) convert(100);
-      height:auto;
-      .header__main{
+      padding: convert(24) convert(100);
+      height: auto;
+      .header__main {
         max-width: convert(1240);
-        gap:convert(40);
-        
+        gap: convert(40);
 
-        .header__head-bar{
-          .header__main-logo{
+        .header__head-bar {
+          .header__main-logo {
             font-size: $font-size-large;
           }
-          .hamburger-btn{
+          .hamburger-btn {
             display: none;
           }
         }
         .header__nav-container {
           display: flex;
 
-          .header__main-nav{
-            width:max-content;
-            padding:0;
+          .header__main-nav {
+            width: max-content;
+            padding: 0;
             display: flex;
             z-index: auto;
             position: static;
             background-color: transparent;
-            ul{
-              padding:0;
-              margin:0;
-              @include flex-row('space-between');
+            ul {
+              padding: 0;
+              margin: 0;
+              @include flex-row("space-between");
               gap: convert(24);
 
-
-              li{
-                a{
-                  color:$primary-black;
+              li {
+                a {
+                  color: $primary-black;
                   font-family: $font-secondary;
                   font-size: $font-size-medium;
                   line-height: 100%;
-
                 }
-
               }
             }
-
           }
-
 
           .sidebar-overlay {
             display: none;
@@ -283,34 +272,27 @@
 
         .header__search {
           display: flex;
-          width:100%;
-          svg{
+          width: 100%;
+          svg {
             display: inline;
-
           }
-          .header__search-input{
-            display:block;
+          .header__search-input {
+            display: block;
           }
-
         }
         .header__main-actions {
-          gap:convert(16);
+          gap: convert(16);
           .search-icon {
             display: none;
           }
         }
       }
-
-
     }
-    @media(max-width:768px){
-      height:auto;
+    @media (max-width: 768px) {
+      height: auto;
     }
-
   }
-  @media(min-width:768px){
-    height:auto;
+  @media (min-width: 768px) {
+    height: auto;
   }
-
 }
-

@@ -1,6 +1,6 @@
 @use "../abstracts/_variables.scss" as *;
 @use "../abstracts/functions.scss" as *;
-
+@use "../abstracts/mixins.scss" as *;
 .auth-body {
     background-color: rgba(240, 240, 240, 1);
     min-height: 100vh;

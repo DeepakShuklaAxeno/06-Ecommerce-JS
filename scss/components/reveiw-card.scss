@@ -1,0 +1,57 @@
+@use "../abstracts/functions" as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.review-card {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    border: 1px solid $color-gray-border;
+    border-radius: $radius-large;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-family: $font-secondary;
+
+    @media (min-width: $break-desktop) {
+      flex: 0 0 calc(33.333% - 0.875rem); 
+    }
+
+    &__stars {
+      color: $color-stars;
+      letter-spacing: convert(5.51);
+      font-size: convert(19.19);
+
+      
+    }
+
+    &__author {
+      font-family: $font-secondary;
+      font-weight: $font-weight-bold;
+      font-size: $font-size-medium;
+      display: flex;
+      align-items: center;
+      line-height: convert(22);
+      gap: convert(6);
+
+      @media (min-width: $break-desktop) {
+        font-size: convert(20);
+        
+      }
+    }
+
+    &__verified {
+      color: $color-green; 
+      font-size: convert(19);
+    }
+
+    &__text {
+        @include regular-text;
+      color: rgba(0, 0, 0, 0.6);
+      line-height: 1.25;
+
+      @media (min-width: $break-desktop) {
+        font-size: $font-size-medium;
+      }
+    }
+  }

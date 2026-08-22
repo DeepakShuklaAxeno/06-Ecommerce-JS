@@ -1,14 +1,19 @@
 @use "../abstracts/_variables.scss" as *;
 @use "../abstracts/_functions.scss" as *;
+@use "../abstracts/mixins.scss" as *;
+@use "../pages/home-main.scss" as *;
+
+
+
 .product-page {
-  
+  font-family: $font-secondary;
   max-width: convert(1440);
   margin: 0 auto;
   padding: 0 convert(16) convert(80);
 
-  @media (min-width: 768px) {
+  @media (min-width: $break-desktop) {
     padding: 0 convert(100) convert(120);
-    margin-bottom:convert(91);
+    margin-bottom: convert(91);
   }
 
   &__container {
@@ -28,7 +33,7 @@
     font-size: convert(14);
     color: rgba(0, 0, 0, 0.6);
 
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       font-size: convert(16);
     }
   }
@@ -36,7 +41,7 @@
   &__link {
     color: rgba(0, 0, 0, 0.6);
     text-decoration: none;
-    
+
     &:hover {
       color: $primary-black;
     }
@@ -54,31 +59,31 @@
   gap: convert(20);
   margin-bottom: convert(50);
 
-  @media (min-width: 768px) {
+  @media (min-width: $break-desktop) {
     flex-direction: row;
     gap: convert(40);
     margin-bottom: convert(80);
   }
 }
 
-/* --- GALLERY --- */
 .product-gallery {
   display: flex;
-  flex-direction: column-reverse; /* Mobile: Thumbs below main image */
-  gap: convert(14);
+  flex-direction: column-reverse; 
   flex: 1;
+  gap:0.75rem;
 
-  @media (min-width: 768px) {
-    flex-direction: row; /* Desktop: Thumbs on the left */
+  @media (min-width: $break-desktop) {
+    flex-direction: row; 
+    gap:convert(14);
   }
 
   &__thumbnails {
     display: flex;
     flex-direction: row;
-    gap: convert(14);
+    gap: 0.75rem;
     justify-content: space-between;
 
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       flex-direction: column;
       width: convert(152);
       justify-content: flex-start;
@@ -87,7 +92,7 @@
 
   &__thumb-btn {
     flex: 1;
-    background-color: #F0EEED;
+    background-color: #f0eeed;
     border: 2px solid transparent;
     border-radius: convert(20);
     overflow: hidden;
@@ -97,7 +102,7 @@
     align-items: center;
     justify-content: center;
 
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       height: convert(167);
       flex: none;
     }
@@ -115,7 +120,7 @@
 
   &__main {
     flex: 1;
-    background-color: #F0EEED;
+    background-color: #f0eeed;
     border-radius: convert(20);
     display: flex;
     align-items: center;
@@ -123,12 +128,11 @@
     overflow: hidden;
     aspect-ratio: 1/1;
 
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       aspect-ratio: auto;
       height: convert(530);
     }
   }
-  
 
   &__main-img {
     width: 100%;
@@ -136,27 +140,26 @@
     object-fit: cover;
   }
 }
-
+  
 .--info {
   flex: 1;
   display: flex;
   flex-direction: column;
 
   &__title {
-    font-family: $font-primary;
-    font-weight: 900;
+    @include sectional-heading;
     font-size: convert(24);
     text-transform: uppercase;
     line-height: 1.1;
     margin-bottom: convert(14);
 
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       font-size: convert(40);
     }
   }
 
   &__rating {
-        font-family: $font-secondary;
+    font-family: $font-secondary;
 
     display: flex;
     align-items: center;
@@ -164,13 +167,13 @@
     font-size: convert(14);
     margin-bottom: convert(14);
 
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       font-size: convert(16);
     }
   }
 
   &__stars {
-    color: #FFC633;
+    color: $color-stars;
     letter-spacing: convert(2);
     font-size: convert(18);
 
@@ -179,33 +182,33 @@
       display: inline-block;
       color: transparent;
       &::before {
-        content: '★';
+        content: "★";
         position: absolute;
         left: 0;
         top: 0;
         width: 50%;
         overflow: hidden;
-        color: #FFC633;
+        color: $color-stars;
       }
       &::after {
-        content: '★';
+        content: "★";
         position: absolute;
         left: 0;
         top: 0;
-        color: rgba(0,0,0,0.2);
+        color: $color-gray-light;
         z-index: -1;
       }
     }
   }
 
   &__score {
-        font-family: $font-secondary;
+    font-family: $font-secondary;
 
     color: rgba(0, 0, 0, 0.6);
   }
 
   &__pricing {
-        font-family: $font-secondary;
+    font-family: $font-secondary;
 
     display: flex;
     align-items: center;
@@ -218,7 +221,7 @@
     font-size: convert(24);
     font-family: $font-secondary;
 
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       font-size: convert(32);
     }
   }
@@ -228,17 +231,16 @@
     font-size: convert(24);
     color: rgba(0, 0, 0, 0.3);
     text-decoration: line-through;
-        font-family: $font-secondary;
+    font-family: $font-secondary;
 
-
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       font-size: convert(32);
     }
   }
 
   &__discount-badge {
     background-color: rgba(255, 51, 51, 0.1);
-    color: #FF3333;
+    color: #ff3333;
     font-size: convert(14);
     font-weight: 500;
     padding: convert(6) convert(14);
@@ -252,7 +254,7 @@
     color: rgba(0, 0, 0, 0.6);
     margin-bottom: convert(24);
 
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       font-size: convert(16);
     }
   }
@@ -271,12 +273,12 @@
   gap: convert(16);
 
   &__label {
-        font-family: $font-secondary;
+    font-family: $font-secondary;
 
     font-size: convert(14);
     color: rgba(0, 0, 0, 0.6);
 
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       font-size: convert(16);
     }
   }
@@ -305,12 +307,14 @@
   outline: none;
 
   &--active {
-    box-shadow: 0 0 0 2px $primary-white, 0 0 0 3px rgba(0,0,0,0.3);
+    box-shadow:
+      0 0 0 2px $primary-white,
+      0 0 0 3px rgba(0, 0, 0, 0.3);
   }
 }
 
 .size-pill {
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
   color: rgba(0, 0, 0, 0.6);
   border: none;
   border-radius: convert(62);
@@ -320,11 +324,12 @@
   cursor: pointer;
   transition: all 0.3s ease;
 
-  @media (min-width: 768px) {
+  @media (min-width: $break-desktop) {
     font-size: convert(16);
   }
 
-  &--active, &:hover {
+  &--active,
+  &:hover {
     background-color: $primary-black;
     color: $primary-white;
   }
@@ -340,12 +345,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #F0F0F0;
+    background-color: #f0f0f0;
     border-radius: convert(62);
     width: convert(110);
     padding: 0 convert(16);
 
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       width: convert(170);
     }
 
@@ -378,7 +383,7 @@
 .product-tabs {
   margin-bottom: convert(50);
 
-  @media (min-width: 768px) {
+  @media (min-width: $break-desktop) {
     margin-bottom: convert(80);
   }
 
@@ -388,7 +393,7 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     margin-bottom: convert(24);
 
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       margin-bottom: convert(32);
     }
   }
@@ -402,7 +407,7 @@
     cursor: pointer;
     font-family: $font-secondary;
 
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       font-size: convert(20);
       padding: convert(24) 0;
     }
@@ -422,7 +427,7 @@
     gap: convert(16);
     margin-bottom: convert(24);
 
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
@@ -432,20 +437,20 @@
   &__title {
     font-size: convert(20);
     font-weight: 700;
-        font-family: $font-secondary;
+    font-family: $font-secondary;
 
-
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       font-size: convert(24);
     }
   }
 
   &__count {
-    color: rgba(0, 0, 0, 0.6);
+    color:$primary-white;
+    background-color: $primary-black;
     font-size: convert(14);
     font-weight: 400;
 
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       font-size: convert(16);
     }
   }
@@ -457,7 +462,7 @@
   }
 
   &__filter-btn {
-    background-color: #F0F0F0;
+    background-color: #f0f0f0;
     border: none;
     border-radius: 50%;
     width: convert(48);
@@ -470,13 +475,13 @@
 
   &__sort {
     display: none;
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       display: block;
     }
   }
 
   &__select {
-    background-color: #F0F0F0;
+    background-color: #f0f0f0;
     border: none;
     border-radius: convert(62);
     padding: convert(16) convert(24);
@@ -488,12 +493,12 @@
   }
 
   &__write-btn {
-    border:none;
+    border: none;
     border-radius: convert(62);
     padding: convert(12) convert(20);
     font-size: convert(14);
 
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       padding: convert(16) convert(24);
       font-size: convert(16);
     }
@@ -505,7 +510,7 @@
     gap: convert(16);
     margin-bottom: convert(32);
 
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       grid-template-columns: repeat(2, 1fr);
       gap: convert(20);
     }
@@ -518,82 +523,47 @@
 }
 
 .review-card {
-      font-family: $font-secondary;
-
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: convert(20);
-  padding: convert(24) convert(24) convert(28);
-  display: flex;
-  flex-direction: column;
-  gap: convert(12);
-
+  
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  &__stars {
-    color: #FFC633;
-    font-size: convert(20);
-    letter-spacing: convert(2);
-  }
-
+  
   &__menu {
     background: transparent;
     border: none;
     font-size: convert(20);
-    color: rgba(0,0,0,0.4);
+    color: rgba(0, 0, 0, 0.4);
     cursor: pointer;
     line-height: 1;
     padding-bottom: convert(8);
   }
 
-  &__author {
-    font-weight: 700;
-    font-size: convert(16);
-    display: flex;
-    align-items: center;
-    gap: convert(6);
-
-    @media (min-width: 768px) {
-      font-size: convert(20);
-    }
-  }
-
-  &__verified {
-    color: #00C853;
-    font-size: convert(14);
-  }
-
-  &__text {
-    color: rgba(0, 0, 0, 0.6);
-    font-size: convert(14);
-    line-height: 1.5;
-
-    @media (min-width: 768px) {
-      font-size: convert(16);
-    }
-  }
+  
+  
 
   &__date {
     font-size: convert(14);
     color: rgba(0, 0, 0, 0.6);
     margin-top: convert(8);
 
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       font-size: convert(16);
     }
   }
 }
 
-.related-products {
-  display: none;
-  .sectional-heading {
-    margin-bottom: convert(40);
-  }
-}
 
-.load-reviews{
-  @include button-style;
+
+.product-reviews__footer{
+
+  .load-reviews {
+    @include button-style;
+    @include medium-text;
+    padding: 1rem 2rem;
+    border: convert(1px) solid $color-gray-border;
+    background-color: $color-white;
+  }
 }
