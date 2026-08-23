@@ -88,3 +88,11 @@
     object-fit: cover;
   }
 }
+
+
+@mixin secondary-bold{
+  font-family: $font-secondary;
+  font-weight: $font-weight-bold;
+  line-height: 100%;
+  font-size: $font-size-medium;
+}

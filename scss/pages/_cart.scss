@@ -1,18 +1,19 @@
 @use "../abstracts/_variables.scss" as *;
 @use "../abstracts/_functions" as *;
 @use "../abstracts/mixins.scss" as *;
-$color-gray-border: rgba(0, 0, 0, 0.1) !default;
-$border-gray-light: #F0EEED !default;
-$color-gray-text: rgba(0, 0, 0, 0.6) !default;
-$color-red: #FF3333 !default;
 
 .cart-page {
   font-family: $font-secondary;
-  margin-bottom:convert(91);
-  max-width: convert(1240);
-  margin: 0 auto;
-  margin-bottom: convert(90);
-  padding: 0 1rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: convert(135);
+  padding: 1rem;
+  gap: 1rem;
+
+  @media (min-width: $break-desktop) {
+    padding: 0 convert(100);
+  }
 
   &__container {
     width: 100%;
@@ -20,33 +21,49 @@ $color-red: #FF3333 !default;
 
   &__title {
     @include sectional-heading;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    color:$primary-black;
+    margin-bottom: 1.25rem;
+    @media (min-width: $break-desktop) {
+      font-size: convert(40);
+    }
   }
 
   &__layout {
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
     gap: 1.25rem;
+
+    @media (min-width: $break-desktop) {
+      flex-direction: row;
+    }
   }
 }
 
 .cart-list {
   flex: 1;
   border: 1px solid $color-gray-border;
-  border-radius: 20px;
-  padding: 24px;
+  border-radius: 1.25rem;
+  padding: convert(14);
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1rem;
+  @media (min-width: $break-desktop) {
+    padding: 1.25rem 1.5rem;
+    gap: 1.5rem;
+  }
 }
 
 .cart-item {
   display: flex;
-  gap: 16px;
-  padding-bottom: 24px;
+  gap: convert(14);
+  justify-content: space-between;
   border-bottom: 1px solid $color-gray-border;
+  width: 100%;
+
+  @media(min-width: $break-desktop){
+    padding-bottom:1.5rem;
+  }
+
+
 
   &:last-child {
     padding-bottom: 0;
@@ -54,21 +71,20 @@ $color-red: #FF3333 !default;
   }
 
   &__image-wrap {
-    width: convert(124);
-    height: convert(124);
-    background: $border-gray-light;
-    border-radius: 1rem;
-    overflow: hidden;
+    width: convert(99);
+    height: convert(99);
+    @include product-image-wrap;
+    border-radius: 0.5rem;
     flex-shrink: 0;
-  }
 
-  &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    @media (min-width: $break-desktop) {
+      width: convert(124);
+      height: convert(124);
+    }
   }
 
   &__details {
+    width: 100%;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -82,16 +98,15 @@ $color-red: #FF3333 !default;
   }
 
   &__title {
-    font-size: 20px;
-    font-weight: 700;
-    color: #000;
-    margin-bottom: 4px;
+    @include secondary-bold;
+
+    @media (min-width: $break-desktop) {
+      font-size: 1.25rem;
+    }
   }
 
   &__attribute {
-    font-size: 14px;
-    color: #000;
-    margin-top: 4px;
+    @include small-text;
 
     &-val {
       color: $color-gray-text;
@@ -114,9 +129,15 @@ $color-red: #FF3333 !default;
   }
 
   &__price {
-    font-size: 24px;
-    font-weight: 700;
-    color: #000;
+    font-size: 1.25rem;
+    font-weight: $font-weight-bold;
+    color: $primary-black;
+    line-height: 100%;
+    letter-spacing: 0;
+
+    @media (min-width: $break-desktop) {
+      font-size: 1.5rem;
+    }
   }
 }
 
@@ -124,15 +145,14 @@ $color-red: #FF3333 !default;
   display: flex;
   align-items: center;
   background: $border-gray-light;
-  border-radius: 62px;
-  padding: 12px 20px;
-  gap: 20px;
+  @include button-style;
+  justify-content: space-between;
+  padding: convert(14) 1.25rem;
+  gap: 1.25rem;
 
   &__btn {
     background: none;
     border: none;
-    font-size: 20px;
-    font-weight: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -140,10 +160,9 @@ $color-red: #FF3333 !default;
   }
 
   &__input {
-    width: 24px;
     text-align: center;
-    font-size: 14px;
-    font-weight: 500;
+    @include small-text;
+    font-weight: $font-weight-medium;
     background: transparent;
     border: none;
     outline: none;
@@ -152,32 +171,34 @@ $color-red: #FF3333 !default;
 }
 
 .cart-summary {
-  width: 100%;
-  max-width: 505px;
   flex-shrink: 0;
   border: 1px solid $color-gray-border;
-  border-radius: 20px;
-  padding: 24px;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  gap: 1rem;
 
   &__title {
-    font-size: 24px;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
     font-weight: 700;
-    margin-bottom: 24px;
-    color: #000;
+    color: $primary-black;
   }
 
   &__row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
-    font-size: 20px;
+    font-size: 1rem;
+    font-weight: $font-weight-regular;
+    margin-bottom: 1.25rem;
 
     &--total {
-      font-size: 24px;
-      margin-bottom: 24px;
-      
-      .cart-summary__label { color: #000; }
-      .cart-summary__value { color: #000; }
+      font-weight: $font-weight-bold;
+      .cart-summary__label {
+        color: $primary-black;
+      }
+      .cart-summary__value {
+        color: $primary-black;
+      }
     }
   }
 
@@ -187,7 +208,7 @@ $color-red: #FF3333 !default;
 
   &__value {
     font-weight: 700;
-    color: #000;
+    color: $color-black;
 
     &--discount {
       color: $color-red;
@@ -197,43 +218,43 @@ $color-red: #FF3333 !default;
   &__divider {
     border: none;
     border-top: 1px solid $color-gray-border;
-    margin: 20px 0;
+    margin: 1.25rem 0;
   }
 
   &__checkout {
     @include button-style;
-    background-color:$primary-black;
-    color:$color-white;
-    width: 100%;
+    background-color: $primary-black;
+    color: $color-white;
+    @include small-text;
+    font-weight: $font-weight-bold;
+    padding: 0.75rem 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
-    margin-top: 24px;
+    width: 100%;
   }
 }
 
 .promo-code {
   display: flex;
-  gap: 12px;
+  gap: 0.75rem;
   align-items: center;
 
   &__wrapper {
     flex: 1;
     display: flex;
     align-items: center;
-    background: $border-gray-light;
-    border-radius: 62px;
-    padding: 12px 16px;
-    gap: 12px;
+    background-color: $product-bg;
+    @include button-style;
+    padding: 0.75rem 1rem;
+    gap: convert(10);
   }
 
   &__input {
     flex: 1;
     background: transparent;
     border: none;
-    font-size: 16px;
-    color: #000;
+    @include small-text;
     outline: none;
 
     &::placeholder {
@@ -243,74 +264,16 @@ $color-red: #FF3333 !default;
 
   &__apply {
     @include button-style;
-    padding: 16px 24px;
+    padding: 0.75rem 1rem;
     background-color: $primary-black;
-    color:$color-white;
+    color: $color-white;
     white-space: nowrap;
   }
 
   &__message {
-    font-size: 14px;
-    margin-top: 8px;
-    min-height: 20px;
-  }
-}
-
-@media (max-width: 900px) {
-  .cart-page {
-    padding: 0 16px 40px;
-
-    &__title {
-      font-size: 32px;
-    }
-
-    &__layout {
-      flex-direction: column;
-    }
-  }
-
-  .cart-summary {
-    max-width: 100%;
-  }
-
-  .cart-item {
-    &__image-wrap {
-      width: 99px;
-      height: 99px;
-    }
-
-    &__title {
-      font-size: 16px;
-    }
-
-    &__attribute {
-      font-size: 12px;
-    }
-
-    &__price {
-      font-size: 20px;
-    }
-  }
-
-  .quantity-selector {
-    padding: 8px 16px;
-    gap: 16px;
-  }
-
-  .cart-summary {
-    padding: 20px;
-
-    &__title {
-      font-size: 20px;
-    }
-
-    &__row {
-      font-size: 16px;
-      
-      &--total {
-        font-size: 20px;
-      }
-    }
+    font-size: convert(14);
+    margin-top: 0.5rem;
+    min-height: 1.25rem;
   }
 }
 
@@ -331,8 +294,8 @@ $color-red: #FF3333 !default;
 }
 
 .modal {
-  background-color:$primary-black;
-  color:$primary-white;
+  background-color: $primary-black;
+  color: $primary-white;
   border-radius: 0.75rem;
   padding: 2rem 1.5rem;
   width: 100%;
@@ -341,7 +304,7 @@ $color-red: #FF3333 !default;
   box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.15);
 
   &__icon {
-    font:$font-secondary;
+    font: $font-secondary;
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 50%;

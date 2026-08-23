@@ -382,6 +382,11 @@ const starHalf = `<svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmln
 <path d="M3.35842 16.7243L8.79246 13.701V0L6.17325 5.63991L0 6.38809L4.55449 10.6219L3.35842 16.7243Z" fill="#FFC633"/>
 </svg>
 `;
+
+const deleteSvg = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.875 3.75H13.75V3.125C13.75 2.62772 13.5525 2.15081 13.2008 1.79917C12.8492 1.44754 12.3723 1.25 11.875 1.25H8.125C7.62772 1.25 7.15081 1.44754 6.79917 1.79917C6.44754 2.15081 6.25 2.62772 6.25 3.125V3.75H3.125C2.95924 3.75 2.80027 3.81585 2.68306 3.93306C2.56585 4.05027 2.5 4.20924 2.5 4.375C2.5 4.54076 2.56585 4.69973 2.68306 4.81694C2.80027 4.93415 2.95924 5 3.125 5H3.75V16.25C3.75 16.5815 3.8817 16.8995 4.11612 17.1339C4.35054 17.3683 4.66848 17.5 5 17.5H15C15.3315 17.5 15.6495 17.3683 15.8839 17.1339C16.1183 16.8995 16.25 16.5815 16.25 16.25V5H16.875C17.0408 5 17.1997 4.93415 17.3169 4.81694C17.4342 4.69973 17.5 4.54076 17.5 4.375C17.5 4.20924 17.4342 4.05027 17.3169 3.93306C17.1997 3.81585 17.0408 3.75 16.875 3.75ZM8.75 13.125C8.75 13.2908 8.68415 13.4497 8.56694 13.5669C8.44973 13.6842 8.29076 13.75 8.125 13.75C7.95924 13.75 7.80027 13.6842 7.68306 13.5669C7.56585 13.4497 7.5 13.2908 7.5 13.125V8.125C7.5 7.95924 7.56585 7.80027 7.68306 7.68306C7.80027 7.56585 7.95924 7.5 8.125 7.5C8.29076 7.5 8.44973 7.56585 8.56694 7.68306C8.68415 7.80027 8.75 7.95924 8.75 8.125V13.125ZM12.5 13.125C12.5 13.2908 12.4342 13.4497 12.3169 13.5669C12.1997 13.6842 12.0408 13.75 11.875 13.75C11.7092 13.75 11.5503 13.6842 11.4331 13.5669C11.3158 13.4497 11.25 13.2908 11.25 13.125V8.125C11.25 7.95924 11.3158 7.80027 11.4331 7.68306C11.5503 7.56585 11.7092 7.5 11.875 7.5C12.0408 7.5 12.1997 7.56585 12.3169 7.68306C12.4342 7.80027 12.5 7.95924 12.5 8.125V13.125ZM12.5 3.75H7.5V3.125C7.5 2.95924 7.56585 2.80027 7.68306 2.68306C7.80027 2.56585 7.95924 2.5 8.125 2.5H11.875C12.0408 2.5 12.1997 2.56585 12.3169 2.68306C12.4342 2.80027 12.5 2.95924 12.5 3.125V3.75Z" fill="#FF3333"/>
+</svg>
+`;
 function starIcon(type) {
   if (type === "full") {
     return starFull;
@@ -500,8 +505,6 @@ function protectPage() {
   }
 }
 
-
-
 function renderProductCard(product) {
   const pricing = product.originalPrice
     ? `
@@ -562,7 +565,7 @@ function renderProductGrid(containerId, products) {
 function initHomePage() {
   renderProductGrid("newArrivalsGrid", PRODUCTS.slice(0, 6));
   renderProductGrid("topSellingGrid", PRODUCTS.slice(7, 11));
-  renderReviewCard("homeReveiwsGrid",REVIEWS.slice(0,9));
+  renderReviewCard("homeReveiwsGrid", REVIEWS.slice(0, 9));
 }
 
 function initProductPage() {
@@ -570,7 +573,7 @@ function initProductPage() {
   const id = params.get("id") || 1;
   const product = getProduct(id);
   const overview = document.querySelector("#productOverview");
-  renderProductGrid("relatedProducts",PRODUCTS.slice(0,9));
+  renderProductGrid("relatedProducts", PRODUCTS.slice(0, 9));
   if (!product) {
     overview.innerHTML = `<p class="product-not-found">Sorry, we couldn't find that product.</p>`;
     return;
@@ -695,7 +698,7 @@ function renderCartItem(item) {
   return `
     <article class="cart-item" data-id="${item.id}">
       <div class="cart-item__image-wrap">
-        <img src="${product.images}" alt="${product.title}" class="cart-item__image">
+        <img src="${product.images[0]}" alt="${product.title}" class="cart-item__image">
       </div>
       <div class="cart-item__details">
         <div class="cart-item__top">
@@ -704,14 +707,22 @@ function renderCartItem(item) {
             <p class="cart-item__attribute">Size: <span class="cart-item__attribute-val">${item.size}</span></p>
             <p class="cart-item__attribute">Color: <span class="cart-item__attribute-val">${item.color}</span></p>
           </div>
-          <button class="cart-item__delete" data-action="remove" aria-label="Remove item">✕</button>
+          <button class="cart-item__delete" data-action="remove" aria-label="Remove item">${deleteSvg}</button>
         </div>
         <div class="cart-item__bottom">
           <span class="cart-item__price">$${lineTotal}</span>
           <div class="quantity-selector">
-            <button class="quantity-selector__btn" data-action="decrease">-</button>
-            <input class="quantity-selector__input" type="number" value="${item.quantity}" readonly>
-            <button class="quantity-selector__btn" data-action="increase">+</button>
+            <button class="quantity-selector__btn" data-action="decrease">
+              <svg width="13" height="2" viewBox="0 0 13 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.5 0.75C12.5 0.948912 12.421 1.13968 12.2803 1.28033C12.1397 1.42098 11.9489 1.5 11.75 1.5H0.75C0.551088 1.5 0.360322 1.42098 0.21967 1.28033C0.0790177 1.13968 0 0.948912 0 0.75C0 0.551088 0.0790177 0.360322 0.21967 0.21967C0.360322 0.0790175 0.551088 0 0.75 0H11.75C11.9489 0 12.1397 0.0790175 12.2803 0.21967C12.421 0.360322 12.5 0.551088 12.5 0.75Z" fill="black"/>
+              </svg>
+            </button>
+            <span class="quantity-selector__input" id="cartItemQuantity">${item.quantity}</span>
+            <button class="quantity-selector__btn" data-action="increase">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.5 6.25C12.5 6.44891 12.421 6.63968 12.2803 6.78033C12.1397 6.92098 11.9489 7 11.75 7H7V11.75C7 11.9489 6.92098 12.1397 6.78033 12.2803C6.63968 12.421 6.44891 12.5 6.25 12.5C6.05109 12.5 5.86032 12.421 5.71967 12.2803C5.57902 12.1397 5.5 11.9489 5.5 11.75V7H0.75C0.551088 7 0.360322 6.92098 0.21967 6.78033C0.0790177 6.63968 0 6.44891 0 6.25C0 6.05109 0.0790177 5.86032 0.21967 5.71967C0.360322 5.57902 0.551088 5.5 0.75 5.5H5.5V0.75C5.5 0.551088 5.57902 0.360322 5.71967 0.21967C5.86032 0.0790177 6.05109 0 6.25 0C6.44891 0 6.63968 0.0790177 6.78033 0.21967C6.92098 0.360322 7 0.551088 7 0.75V5.5H11.75C11.9489 5.5 12.1397 5.57902 12.2803 5.71967C12.421 5.86032 12.5 6.05109 12.5 6.25Z" fill="black"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -850,7 +861,6 @@ function initCartPage() {
 function initLoginPage() {
   const form = document.querySelector("#loginForm");
   const errorEl = document.querySelector("#authError");
-  
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -889,12 +899,22 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 function openSidebar() {
-  let navContainer = document.querySelector(".nav-container");
+  let navContainer = document.querySelector(".header__nav-container");
+  let sidebarOvarlay = document.querySelector(".sidebar-overlay");
   document.querySelector(".hamburger-btn").addEventListener("click", () => {
     navContainer.style.display = "flex";
+    sidebarOvarlay.style.display = "flex";
+    document.body.overflow = "hidden";
   });
   document.querySelector(".header__nav-close").addEventListener("click", () => {
     navContainer.style.display = "none";
+    sidebarOvarlay.style.display = "none";
+    document.body.overflow = "";
+  });
+  sidebarOvarlay.addEventListener("click", () => {
+    navContainer.style.display = "none";
+    sidebarOvarlay.style.display = "none";
+    document.body.overflow = "";
   });
 }
 
@@ -905,7 +925,6 @@ function renderReviewCard(review, variant = "compact") {
     : "";
 
   if (variant === "full") {
-    
     return `
       <article class="review-card">
         <div class="review-card__header">
@@ -931,5 +950,7 @@ function renderReviewCard(review, variant = "compact") {
 function renderReviewsGrid(containerId, reviews, variant = "compact") {
   const container = document.getElementById(containerId);
   if (!container) return;
-  container.innerHTML = reviews.map((r) => renderReviewCard(r, variant)).join("");
+  container.innerHTML = reviews
+    .map((r) => renderReviewCard(r, variant))
+    .join("");
 }
