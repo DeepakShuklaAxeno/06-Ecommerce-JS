@@ -9,6 +9,10 @@
 @use "pages/_login.scss" as *;
 @use "pages/_product.scss" as *;
 @use "components/reveiw-card.scss" as *;
+@use "components/bread-crumb.scss" as *;
+@use "components/product-card.scss" as *;
+@use "components/button.scss" as *;
+
 *{
   margin:0;
   padding:0;

@@ -8,12 +8,11 @@
   width: 100%;
 
   .header__promo {
-    
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: $primary-black;
-    
+
     padding: convert(10) 0;
 
     .header__signup-text {
@@ -23,20 +22,17 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      gap:convert(8);
-      .normal-text{
-       
+      gap: convert(8);
+      .normal-text {
         text-wrap-mode: nowrap;
       }
       .signup__link {
         font-weight: $font-weight-medium;
         text-decoration: underline;
-        color:$primary-white;
-        
+        color: $primary-white;
       }
       @media (min-width: $break-desktop) {
         @include regular-text;
-        
       }
     }
 
@@ -211,10 +207,26 @@
         align-items: center;
         justify-content: space-between;
         gap: convert(12);
+        .cart-link {
+          position:relative;
 
-        a {
-          width: convert(24);
-          height: convert(24);
+          .cart-count {
+            @include regular-text;
+            font-weight: 800;
+            position: absolute;
+            top:-0.6rem;
+            left:0.9rem;
+            background-color: $primary-white;
+            color: $color-black;
+            border-radius: 50%;
+            display: flex;
+            height:1.25rem;
+            width:1.25rem;
+            border:2px solid black;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+          }
         }
       }
     }
@@ -281,7 +293,7 @@
           }
         }
         .header__main-actions {
-          gap: convert(16);
+          //gap: convert(16);
           .search-icon {
             display: none;
           }

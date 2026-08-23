@@ -71,7 +71,7 @@
         outline: none;
       }
     }
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -108,7 +108,7 @@
       text-align: left;
       flex-direction: column;
       align-content: space-between;
-      gap: convert(20);
+       gap: convert(20);
 
       .footer__brand-intro {
         display: flex;
@@ -123,7 +123,8 @@
             letter-spacing: 0;
             vertical-align: middle;
             color: $primary-black;
-            font-size: convert(28.85);
+            font-size: convert(33.45);
+            transform:translateY(-0.4rem);
           }
         }
         .footer__brand-description {
@@ -144,7 +145,7 @@
           list-style: none;
         }
       }
-      @media (min-width: 768px) {
+      @media (min-width: $break-desktop) {
         .footer__brand {
           gap: convert(35);
           &-intro {
@@ -153,6 +154,7 @@
               &-header {
                 font-size: convert(33.45);
                 color: $primary-black;
+                
               }
             }
             .footer__brand-description {
@@ -173,14 +175,14 @@
         flex-direction: column;
         gap: 1rem;
 
-        h3 {
+        
           font-family: $font-secondary;
           font-size: $font-size-regular;
           color: $primary-black;
-          line-height: 18px;
+          line-height: convert(18);
           font-weight: $font-weight-medium;
-          letter-spacing: 3px;
-        }
+          letter-spacing: convert(3);
+        
         ul {
           gap: convert(16);
           display: flex;
@@ -194,16 +196,17 @@
           }
         }
       }
-      @media (min-width: 768px) {
+      @media (min-width: $break-desktop) {
         display: flex;
         justify-content: space-between;
         gap: convert(113.5);
         &-group {
-          //flex:1;
+          gap:convert(26);
+          flex:1;
           flex-wrap: wrap;
           width: max-content;
           ul {
-            gap: convert(10);
+            gap: convert(14.25);
             li {
               a {
                 gap: convert(24);
@@ -216,10 +219,10 @@
         }
       }
     }
-    @media (min-width: 768px) {
+    @media (min-width: $break-desktop) {
       flex-direction: row;
       justify-content: space-between;
-      gap: 1.5rem;
+      //gap: convert(113.5);
       margin-top: convert(50);
     }
   }
@@ -273,7 +276,7 @@
       }
     }
   }
-  @media (min-width: 768px) {
+  @media (min-width: $break-desktop) {
     padding: 0 convert(100);
 
     .footer__bottom {

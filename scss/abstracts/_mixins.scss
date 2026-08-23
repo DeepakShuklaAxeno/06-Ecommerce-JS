@@ -1,19 +1,11 @@
 @use "variables.scss" as *;
+@use "functions" as *;
 
 @mixin button-style {
   border-radius: $radius-round;
   border: none;
 }
 
-@mixin sectional-heading-desktop {
-  font-family:  $font-primary;
-  font-weight: $font-weight-bold;
-  font-size: convert(48);
-  line-height: 100%;
-  letter-spacing: 0%;
-  text-align: center;
-  transform: translateY(-1rem);
-}
 @mixin sectional-heading {
   font-family: $font-primary;
   font-weight: $font-weight-bold;
@@ -21,7 +13,9 @@
   letter-spacing: 0;
   vertical-align: middle;
   transform: translateY(-1rem);
-
+  @media (min-width: $break-desktop) {
+    font-size: 3rem;
+  }
 }
 
 @mixin regular-text {
@@ -53,4 +47,44 @@
   display: flex;
   flex-direction: column;
   justify-content: $justify;
+}
+
+@mixin hide-scrollbar-carousel($snap: false) {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  @if $snap {
+    scroll-snap-type: x mandatory;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin rating-stars {
+  fill: currentColor;
+  gap: convert(2);
+}
+
+@mixin product-image-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background-color: $product-bg;
+  border-radius: convert(13);
+  overflow: hidden;
+  aspect-ratio: 1/1;
+
+  @media (min-width: $break-desktop) {
+    border-radius: convert(20);
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }

@@ -5,11 +5,11 @@ $product-bg: #F0EEED;
 $color-black: #000000;
 $color-white: #ffffff;
 $color-gray-text: #6b7280;
-$color-gray-light: #f0f0f0;
+$border-gray-light: #f0f0f0;
 $color-gray-border: #d9d9d9;
 $color-red: #ff3333;
 $color-green: #2ec4b6;
-
+$original-price-gray:rgba(0, 0, 0, 0.4);
 
 $container-width: 1240px;
 
@@ -21,14 +21,17 @@ $radius-round: 62px;
 $break-desktop:768px;
 $break-tablet: 900px;
 $break-mobile: 600px;
-$color-green:rgb(18, 198, 18);
+$color-checkmark:rgb(18, 198, 18);
 $color-stars: #ffc633;
 $radius-round:62px;
 $color-red: rgba(255, 51, 51, 1);
-$color-gray-light:rgba(0, 0, 0, 0.1);
+$discount-red: #ff3333;
+$discount-bg: rgba(255, 51, 51, 0.1);
+$border-gray-light:rgba(0, 0, 0, 0.1);
 $radius-medium: 1.25rem;
 $color-gray-border:rgba(0, 0, 0, 0.1);
 $color-gray-text:rgba(0, 0, 0, 0.6);
+$color-switch-active:rgba(0, 0, 0, 0.3);
 $container-width:1440px;
 $radius-large: 1.25rem;
 $font-primary: "Integral CF", sans-serif;

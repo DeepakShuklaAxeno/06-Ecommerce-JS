@@ -2,17 +2,20 @@
 @use "../abstracts/_functions.scss" as *;
 @use "../abstracts/mixins.scss" as *;
 @use "../pages/home-main.scss" as *;
+@use "../components/product-card.scss" as *;
 
 
 
 .product-page {
-  font-family: $font-secondary;
-  max-width: convert(1440);
-  margin: 0 auto;
+  
+  width:100%;
+  margin: 0 1;
   padding: 0 convert(16) convert(80);
+  margin-bottom: convert(131);
+  
 
   @media (min-width: $break-desktop) {
-    padding: 0 convert(100) convert(120);
+    padding: 0 convert(100) convert(91);
     margin-bottom: convert(91);
   }
 
@@ -21,43 +24,14 @@
   }
 }
 
-.breadcrumb {
-  padding: convert(24) 0;
 
-  &__list {
-    display: flex;
-    align-items: center;
-    gap: convert(12);
-    list-style: none;
-    font-family: $font-secondary;
-    font-size: convert(14);
-    color: rgba(0, 0, 0, 0.6);
-
-    @media (min-width: $break-desktop) {
-      font-size: convert(16);
-    }
-  }
-
-  &__link {
-    color: rgba(0, 0, 0, 0.6);
-    text-decoration: none;
-
-    &:hover {
-      color: $primary-black;
-    }
-  }
-
-  &__current {
-    color: $primary-black;
-    font-weight: 500;
-  }
-}
 
 .product-overview {
   display: flex;
   flex-direction: column;
   gap: convert(20);
   margin-bottom: convert(50);
+  width:100%;
 
   @media (min-width: $break-desktop) {
     flex-direction: row;
@@ -92,16 +66,8 @@
 
   &__thumb-btn {
     flex: 1;
-    background-color: #f0eeed;
-    border: 2px solid transparent;
-    border-radius: convert(20);
-    overflow: hidden;
-    cursor: pointer;
-    aspect-ratio: 1/1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+    @include product-image-wrap;
+    border: convert(2) solid transparent;
     @media (min-width: $break-desktop) {
       height: convert(167);
       flex: none;
@@ -112,60 +78,64 @@
     }
   }
 
-  &__thumb-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  
 
   &__main {
+    
+    border: convert(2) solid transparent;
+    
+    @include product-image-wrap;
     flex: 1;
-    background-color: #f0eeed;
-    border-radius: convert(20);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    aspect-ratio: 1/1;
 
     @media (min-width: $break-desktop) {
-      aspect-ratio: auto;
-      height: convert(530);
+      max-height: convert(530);
+      
     }
   }
 
-  &__main-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
   
-.--info {
+}
+
+
+
+
+
+.product-info {
   flex: 1;
   display: flex;
   flex-direction: column;
+  width:100%;
+  gap:1.5rem;
+
+  @media(min-width: $break-desktop){
+    max-width: 48.3%;
+  }
+
+  .product-details{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap:0.75rem;
+  }
 
   &__title {
-    @include sectional-heading;
-    font-size: convert(24);
+    font-family: $font-primary;
+    font-weight: $font-weight-bold;
+    font-size: 1.5rem;
     text-transform: uppercase;
-    line-height: 1.1;
-    margin-bottom: convert(14);
-
+    line-height: 1.75rem;
     @media (min-width: $break-desktop) {
       font-size: convert(40);
+      
     }
   }
 
   &__rating {
     font-family: $font-secondary;
-
     display: flex;
     align-items: center;
     gap: convert(8);
     font-size: convert(14);
-    margin-bottom: convert(14);
 
     @media (min-width: $break-desktop) {
       font-size: convert(16);
@@ -173,38 +143,13 @@
   }
 
   &__stars {
-    color: $color-stars;
-    letter-spacing: convert(2);
-    font-size: convert(18);
-
-    .half-star {
-      position: relative;
-      display: inline-block;
-      color: transparent;
-      &::before {
-        content: "★";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 50%;
-        overflow: hidden;
-        color: $color-stars;
-      }
-      &::after {
-        content: "★";
-        position: absolute;
-        left: 0;
-        top: 0;
-        color: $color-gray-light;
-        z-index: -1;
-      }
-    }
+    gap: convert(2);
   }
 
   &__score {
     font-family: $font-secondary;
 
-    color: rgba(0, 0, 0, 0.6);
+    color: $color-gray-text;
   }
 
   &__pricing {
@@ -212,8 +157,8 @@
 
     display: flex;
     align-items: center;
-    gap: convert(12);
-    margin-bottom: convert(20);
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
   }
 
   &__price-current {
@@ -239,8 +184,8 @@
   }
 
   &__discount-badge {
-    background-color: rgba(255, 51, 51, 0.1);
-    color: #ff3333;
+    background-color: $discount-bg;
+    color: $discount-red;
     font-size: convert(14);
     font-weight: 500;
     padding: convert(6) convert(14);
@@ -248,11 +193,10 @@
   }
 
   &__description {
-    font-family: $font-secondary;
-    font-size: convert(14);
-    line-height: 1.5;
-    color: rgba(0, 0, 0, 0.6);
-    margin-bottom: convert(24);
+    @include regular-text;
+    line-height: convert(20);
+    color: $color-gray-text;
+    text-wrap: wrap;
 
     @media (min-width: $break-desktop) {
       font-size: convert(16);
@@ -262,11 +206,10 @@
   &__divider {
     border: none;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
-    margin: convert(24) 0;
+    
   }
 }
 
-/* --- PRODUCT OPTIONS (Color & Size) --- */
 .product-options {
   display: flex;
   flex-direction: column;
@@ -285,17 +228,24 @@
 
   &__colors {
     display: flex;
-    gap: convert(16);
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    @media (min-width: $break-desktop) {
+      gap:1rem;
+    }
   }
 
   &__sizes {
     display: flex;
     flex-wrap: wrap;
-    gap: convert(12);
+    gap: 0.5rem;
+    @media (min-width: $break-desktop) {
+      gap:0.75rem;
+    }
   }
 }
 
-.color-swatch {
+.color-switch {
   width: convert(37);
   height: convert(37);
   border-radius: 50%;
@@ -305,17 +255,20 @@
   align-items: center;
   justify-content: center;
   outline: none;
+  border: 1px solid $color-gray-border;
 
   &--active {
     box-shadow:
       0 0 0 2px $primary-white,
-      0 0 0 3px rgba(0, 0, 0, 0.3);
+      0 0 0 2px $color-switch-active;
   }
 }
 
 .size-pill {
-  background-color: #f0f0f0;
-  color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: space-between;
+  background-color: $product-bg;
+  color: $color-gray-text;
   border: none;
   border-radius: convert(62);
   padding: convert(12) convert(24);
@@ -335,42 +288,49 @@
   }
 }
 
-/* --- ACTIONS --- */
 .product-actions {
   display: flex;
   gap: convert(16);
   margin-top: convert(8);
 
-  .quantity-control {
+  .quantity-selector {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #f0f0f0;
-    border-radius: convert(62);
+    background-color: $product-bg;
     width: convert(110);
-    padding: 0 convert(16);
-
+    padding: 0.75rem 1rem;;
     @media (min-width: $break-desktop) {
+      padding: 1rem 1.25rem;
       width: convert(170);
     }
 
     &__btn {
       background: transparent;
       border: none;
-      font-size: convert(24);
       cursor: pointer;
-      color: $primary-black;
+      width: 1.25rem;
+      height:1.25rem;
+      @media(min-width: $break-desktop){
+        width: 1.5rem;
+        height:1.5rem;
+      }
     }
 
     &__input {
-      width: convert(30);
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
       background: transparent;
       border: none;
-      font-family: $font-secondary;
-      font-size: convert(16);
+      @include small-text;
       font-weight: 500;
       outline: none;
+
+      @media(min-width: $break-desktop){
+        @include medium-text;
+      }
     }
   }
 
@@ -425,7 +385,7 @@
     display: flex;
     flex-direction: column;
     gap: convert(16);
-    margin-bottom: convert(24);
+    margin-bottom: convert(50);
 
     @media (min-width: $break-desktop) {
       flex-direction: row;
@@ -445,8 +405,8 @@
   }
 
   &__count {
-    color:$primary-white;
-    background-color: $primary-black;
+    color:$primary-black;
+    background-color: $primary-white;
     font-size: convert(14);
     font-weight: 400;
 
@@ -458,39 +418,50 @@
   &__controls {
     display: flex;
     align-items: center;
+    padding:1rem 1.25rem;
+    border:none;
+    background-color: transparent;
     gap: convert(10);
   }
 
-  &__filter-btn {
-    background-color: #f0f0f0;
+  &__icon-btn {
+    background-color: $product-bg;
+    display: flex;
+    
     border: none;
     border-radius: 50%;
-    width: convert(48);
-    height: convert(48);
+    padding:0.5rem;
+    width: convert(40);
+    height: convert(40);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    @media(min-width:$break-desktop){
+      width:3rem;
+      height: 3rem;
+    }
   }
 
   &__sort {
     display: none;
     @media (min-width: $break-desktop) {
-      display: block;
+
+      display: flex;
+      padding:1rem 1.25rem;
+      background-color: $product-bg;
+      border:none;
+      align-items: center;
+      justify-self: center;
+      @include medium-text;
+      @include button-style;
+      gap:1.25rem;
+      font-weight: $font-weight-bold;
     }
   }
+  
 
-  &__select {
-    background-color: #f0f0f0;
-    border: none;
-    border-radius: convert(62);
-    padding: convert(16) convert(24);
-    font-family: $font-secondary;
-    font-weight: 500;
-    font-size: convert(16);
-    outline: none;
-    cursor: pointer;
-  }
+  
 
   &__write-btn {
     border: none;
@@ -535,7 +506,7 @@
     background: transparent;
     border: none;
     font-size: convert(20);
-    color: rgba(0, 0, 0, 0.4);
+    color: $color-gray-text;
     cursor: pointer;
     line-height: 1;
     padding-bottom: convert(8);
@@ -546,7 +517,7 @@
 
   &__date {
     font-size: convert(14);
-    color: rgba(0, 0, 0, 0.6);
+    color: $color-gray-text;
     margin-top: convert(8);
 
     @media (min-width: $break-desktop) {
@@ -554,16 +525,32 @@
     }
   }
 }
-
-
-
 .product-reviews__footer{
-
-  .load-reviews {
+  .load-reviews{
     @include button-style;
     @include medium-text;
     padding: 1rem 2rem;
-    border: convert(1px) solid $color-gray-border;
-    background-color: $color-white;
+    border-radius:convert(62);
+    border: convert(1) solid $color-gray-border;
+    background-color: $product-bg;
+  }
+}
+
+.related-products{
+  display: flex;
+  flex-direction: column;
+
+  .sectional-heading{
+    text-align: center;
+    @include sectional-heading;
+    line-height: 2.25rem;
+    margin-bottom:convert(40);
+  }
+
+  .products__carousel{
+    display: flex;
+    flex-direction: row;
+    gap:1rem;
+    @include hide-scrollbar-carousel();
   }
 }

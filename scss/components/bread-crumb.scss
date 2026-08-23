@@ -1,0 +1,36 @@
+@use "../abstracts/_variables.scss" as *;
+@use "../abstracts/_functions.scss" as *;
+@use "../abstracts/_mixins.scss" as *;
+
+
+.breadcrumb {
+  padding: convert(24) 0;
+  border-top: convert(1) solid $border-gray-light;
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: convert(12);
+    list-style: none;
+    font-family: $font-secondary;
+    font-size: convert(14);
+    color: rgba(0, 0, 0, 0.6);
+
+    @media (min-width: $break-desktop) {
+      font-size: convert(16);
+    }
+  }
+
+  &__link {
+    color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+
+    &:hover {
+      color: $primary-black;
+    }
+  }
+
+  &__current {
+    color: $primary-black;
+    font-weight: 500;
+  }
+}

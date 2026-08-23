@@ -1,0 +1,23 @@
+
+@use "../abstracts/_variables.scss" as *;
+@use "../abstracts/_functions.scss" as *;
+@use "../abstracts/_mixins.scss" as *;
+
+.btn--outline {
+    @include button-style;
+    @include medium-text;
+    background-color: transparent;
+    color: $primary-black;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: convert(16) convert(54);
+    width: 100%;
+
+    @media (min-width: $break-desktop) {
+      width: auto;
+    }
+
+    &:hover {
+      background-color: $primary-black;
+      color: $primary-white;
+    }
+  }

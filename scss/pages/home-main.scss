@@ -8,9 +8,9 @@
 
   .hero {
     .hero__main {
-      position: relative;
+      
       display: flex;
-      justify-content: center;
+      gap:0;
       width: 100%;
       flex-direction: column;
       padding-top: convert(40);
@@ -20,19 +20,19 @@
         position: relative;
 
         flex-direction: column;
-        max-width: convert(1440);
+        
         width: 100%;
 
         .hero__models-canvas-desktop {
           display: none;
           @media (min-width: $break-desktop) {
-            max-width: 100%;
-            height: auto;
+            width: 100%;
+            height:auto;
             display: block;
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
+             right: 0;
             object-fit: cover;
             z-index: -1;
           }
@@ -104,7 +104,7 @@
             .stat-divider {
               width: 1px;
               height: convert(52);
-              background-color: rgba(0, 0, 0, 0.1);
+              background-color: $color-gray-border;
 
               &-2 {
                 display: none;
@@ -119,7 +119,7 @@
             gap: convert(32);
 
             .hero__main-heading {
-              @include sectional-heading-desktop;
+              @include sectional-heading;
               text-align: left;
               width: convert(600);
               font-size: $font-desktop-large;
@@ -229,7 +229,7 @@
         @media (min-width: $break-desktop) {
           flex-wrap: nowrap;
           gap: convert(106);
-          margin: convert(69) 0;
+          
           justify-content: space-between;
           padding: convert(42) convert(100);
         }
@@ -284,29 +284,11 @@
     margin-bottom: convert(32);
 
     @media (min-width: $break-desktop) {
-      font-size: convert(48);
+      
       margin-bottom: convert(54);
     }
   }
 
-  .btn--outline {
-    @include button-style;
-    @include medium-text;
-    background-color: transparent;
-    color: $primary-black;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: convert(16) convert(54);
-    width: 100%;
-
-    @media (min-width: $break-desktop) {
-      width: auto;
-    }
-
-    &:hover {
-      background-color: $primary-black;
-      color: $primary-white;
-    }
-  }
 
   .section-divider {
     border: none;
@@ -332,16 +314,15 @@
     }
 
     &__carousel {
+      @include hide-scrollbar-carousel();
       display: flex;
       flex-direction: row;
 
       justify-content: flex-start;
       gap: convert(16);
       width: 100%;
-      overflow-x: scroll;
-      overflow-y: hidden;
 
-      -webkit-overflow-scrolling: touch;
+      -webkit-overflow-scrolling:auto;
       scrollbar-width: none;
 
       &::-webkit-scrollbar {
@@ -349,109 +330,7 @@
       }
       margin-bottom: convert(24);
 
-      .product-card {
-        display: flex;
-        flex-direction: column;
-        gap: convert(10);
-        text-decoration: none;
-        color: $primary-black;
-        cursor: pointer;
-
-        &__image-wrap {
-          background-color: $product-bg;
-          border-radius: convert(13);
-          overflow: hidden;
-          aspect-ratio: 1/1;
-          width: convert(200);
-          height: convert(200);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 2rem;
-
-          @media (min-width: $break-desktop) {
-            border-radius: convert(20);
-            width: convert(300);
-            height: convert(300);
-          }
-
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-        }
-
-        &__title {
-          font-weight: 700;
-          font-family: $font-secondary;
-          font-size: convert(16);
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-
-          @media (min-width: $break-desktop) {
-            font-size: convert(20);
-          }
-        }
-
-        &__rating {
-          display: flex;
-          align-items: center;
-          gap: convert(5);
-          font-size: convert(12);
-          font-family: $font-secondary;
-
-          @media (min-width: $break-desktop) {
-            font-size: convert(14);
-          }
-
-          &-stars {
-            color: $color-stars;
-            letter-spacing: convert(2);
-          }
-          &-score {
-            color: $color-gray-text;
-            font-family: $font-secondary;
-          }
-        }
-
-        &__pricing {
-          display: flex;
-          align-items: center;
-          gap: convert(10);
-          font-family: $font-secondary;
-        }
-
-        &__price {
-          font-weight: 700;
-          font-size: convert(20);
-          font-family: $font-secondary;
-
-          @media (min-width: $break-desktop) {
-            font-size: convert(24);
-          }
-
-          &--original {
-            color: $color-gray-light;
-            text-decoration: line-through;
-          }
-        }
-
-        &__discount {
-          background-color: rgba(255, 51, 51, 0.1);
-          color: #ff3333;
-          font-size: convert(10);
-          font-weight: 500;
-          padding: convert(4) convert(10);
-          border-radius: convert(62);
-
-          @media (min-width: $break-desktop) {
-            font-size: convert(12);
-            padding: convert(6) convert(14);
-          }
-        }
-      }
+      
 
       @media (min-width: $break-desktop) {
         gap: convert(20);
@@ -467,7 +346,7 @@
   }
 
   .dress-style {
-    background-color: #f0f0f0;
+    background-color: $border-gray-light;
     border-radius: convert(20);
     padding: convert(40) 1.5rem;
     //margin: convert(40) 0;
@@ -545,7 +424,6 @@
 
   .reviews {
     margin: convert(40) 0;
-
     @media (min-width: $break-desktop) {
       margin: convert(80) 0;
     }
@@ -570,6 +448,10 @@
       display: none;
       gap: convert(16);
 
+      .reviews__arrow{
+        border:none;
+        background-color: transparent;
+      }
       @media (min-width: $break-desktop) {
         display: flex;
       }
@@ -579,8 +461,8 @@
       max-width: 100%;
       display: flex;
       gap: convert(16);
-      overflow-x: scroll;
-      scroll-snap-type: x mandatory;
+      @include hide-scrollbar-carousel();
+     
       padding-bottom: convert(10);
 
       &::-webkit-scrollbar {
@@ -589,57 +471,6 @@
 
       @media (min-width: $break-desktop) {
         gap: convert(20);
-      }
-    }
-  }
-
-  .review-card {
-    flex: 0 0 100%;
-    scroll-snap-align: start;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: convert(20);
-    padding: convert(24);
-    display: flex;
-    flex-direction: column;
-    gap: convert(12);
-    font-family: $font-secondary;
-
-    @media (min-width: $break-desktop) {
-      flex: 0 0 calc(33.333% - 14px); // Shows 3 cards cleanly
-    }
-
-    &__stars {
-      color: #ffc633;
-      letter-spacing: convert(2);
-      font-size: convert(18);
-    }
-
-    &__author {
-      font-family: $font-secondary;
-
-      font-weight: 700;
-      font-size: convert(16);
-      display: flex;
-      align-items: center;
-      gap: convert(6);
-
-      @media (min-width: $break-desktop) {
-        font-size: convert(20);
-      }
-    }
-
-    &__verified {
-      color: #00c853; // Green checkmark
-      font-size: convert(14);
-    }
-
-    &__text {
-      color: rgba(0, 0, 0, 0.6);
-      font-size: convert(14);
-      line-height: 1.5;
-
-      @media (min-width: $break-desktop) {
-        font-size: convert(16);
       }
     }
   }
