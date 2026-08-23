@@ -126,6 +126,7 @@
     line-height: 1.75rem;
     @media (min-width: $break-desktop) {
       font-size: convert(40);
+      line-height: 100%;
       
     }
   }
