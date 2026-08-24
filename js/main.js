@@ -281,7 +281,7 @@ const REVIEWS = [
     rating: 4.5,
     text: "I absolutely love this t-shirt! The design is unique and the fabric feels so comfortable. As a fellow designer, I appreciate the attention to detail. It's become my favorite go-to shirt.",
     date: "August 14, 2023",
-    productIds: [13], // One Life Graphic T-Shirt
+    productIds: [13],
   },
   {
     id: 2,
@@ -335,7 +335,7 @@ const REVIEWS = [
     rating: 5,
     text: "I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.",
     date: "July 30, 2023",
-    productIds: [], // general/featured — home page only
+    productIds: [],
   },
   {
     id: 8,
@@ -387,6 +387,7 @@ const deleteSvg = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" x
 <path d="M16.875 3.75H13.75V3.125C13.75 2.62772 13.5525 2.15081 13.2008 1.79917C12.8492 1.44754 12.3723 1.25 11.875 1.25H8.125C7.62772 1.25 7.15081 1.44754 6.79917 1.79917C6.44754 2.15081 6.25 2.62772 6.25 3.125V3.75H3.125C2.95924 3.75 2.80027 3.81585 2.68306 3.93306C2.56585 4.05027 2.5 4.20924 2.5 4.375C2.5 4.54076 2.56585 4.69973 2.68306 4.81694C2.80027 4.93415 2.95924 5 3.125 5H3.75V16.25C3.75 16.5815 3.8817 16.8995 4.11612 17.1339C4.35054 17.3683 4.66848 17.5 5 17.5H15C15.3315 17.5 15.6495 17.3683 15.8839 17.1339C16.1183 16.8995 16.25 16.5815 16.25 16.25V5H16.875C17.0408 5 17.1997 4.93415 17.3169 4.81694C17.4342 4.69973 17.5 4.54076 17.5 4.375C17.5 4.20924 17.4342 4.05027 17.3169 3.93306C17.1997 3.81585 17.0408 3.75 16.875 3.75ZM8.75 13.125C8.75 13.2908 8.68415 13.4497 8.56694 13.5669C8.44973 13.6842 8.29076 13.75 8.125 13.75C7.95924 13.75 7.80027 13.6842 7.68306 13.5669C7.56585 13.4497 7.5 13.2908 7.5 13.125V8.125C7.5 7.95924 7.56585 7.80027 7.68306 7.68306C7.80027 7.56585 7.95924 7.5 8.125 7.5C8.29076 7.5 8.44973 7.56585 8.56694 7.68306C8.68415 7.80027 8.75 7.95924 8.75 8.125V13.125ZM12.5 13.125C12.5 13.2908 12.4342 13.4497 12.3169 13.5669C12.1997 13.6842 12.0408 13.75 11.875 13.75C11.7092 13.75 11.5503 13.6842 11.4331 13.5669C11.3158 13.4497 11.25 13.2908 11.25 13.125V8.125C11.25 7.95924 11.3158 7.80027 11.4331 7.68306C11.5503 7.56585 11.7092 7.5 11.875 7.5C12.0408 7.5 12.1997 7.56585 12.3169 7.68306C12.4342 7.80027 12.5 7.95924 12.5 8.125V13.125ZM12.5 3.75H7.5V3.125C7.5 2.95924 7.56585 2.80027 7.68306 2.68306C7.80027 2.56585 7.95924 2.5 8.125 2.5H11.875C12.0408 2.5 12.1997 2.56585 12.3169 2.68306C12.4342 2.80027 12.5 2.95924 12.5 3.125V3.75Z" fill="#FF3333"/>
 </svg>
 `;
+
 function starIcon(type) {
   if (type === "full") {
     return starFull;
@@ -499,7 +500,7 @@ function updateAuthUI() {
 function protectPage() {
   if (!isLoggedIn()) {
     const redirect = encodeURIComponent(
-      window.location.pathtitle.split("/").pop() + window.location.search,
+      window.location.pathname.split("/").pop() + window.location.search,
     );
     window.location.href = "login.html?redirect=" + redirect;
   }
@@ -562,362 +563,6 @@ function renderProductGrid(containerId, products) {
   container.innerHTML = products.map(renderProductCard).join("");
 }
 
-function initHomePage() {
-  renderProductGrid("newArrivalsGrid", PRODUCTS.slice(0, 6));
-  renderProductGrid("topSellingGrid", PRODUCTS.slice(7, 11));
-  renderReviewCard("homeReveiwsGrid", REVIEWS.slice(0, 9));
-}
-
-function initProductPage() {
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id") || 1;
-  const product = getProduct(id);
-  const overview = document.querySelector("#productOverview");
-  renderProductGrid("relatedProducts", PRODUCTS.slice(0, 9));
-  if (!product) {
-    overview.innerHTML = `<p class="product-not-found">Sorry, we couldn't find that product.</p>`;
-    return;
-  }
-
-  document.querySelector("#breadcrumbCurrent").textContent = product.title;
-  document.querySelector("#productImage").src = product.images[0];
-  document.querySelector("#productImage").alt = product.title;
-
-  const thumbsContainer = document.querySelector(
-    ".product-gallery__thumbnails",
-  );
-  thumbsContainer.innerHTML = product.images
-    .slice(0, 3)
-    .map(
-      (img, i) => `
-      <button class="product-gallery__thumb-btn${i === 0 ? " product-gallery__thumb-btn--active" : ""}" data-image="${img}">
-        <img src="${img}" alt="Thumbnail ${i + 1}" class="product-gallery__thumb-img">
-      </button>
-    `,
-    )
-    .join("");
-
-  thumbsContainer.addEventListener("click", (e) => {
-    const btn = e.target.closest(".product-gallery__thumb-btn");
-    if (!btn) return;
-    thumbsContainer
-      .querySelectorAll(".product-gallery__thumb-btn")
-      .forEach((el) =>
-        el.classList.remove("product-gallery__thumb-btn--active"),
-      );
-    btn.classList.add("product-gallery__thumb-btn--active");
-    document.querySelector("#productImage").src = btn.dataset.image;
-  });
-
-  document.querySelector("#productTitle").textContent = product.title;
-  document.querySelector("#productStars").innerHTML = renderRatingStars(
-    product.rating,
-  );
-  document.querySelector("#productScore").textContent = product.rating;
-  document.querySelector("#productPrice").textContent = "$" + product.price;
-
-  const originalPriceEl = document.querySelector("#productPriceOriginal");
-  const discountBadgeEl = document.querySelector("#productDiscountBadge");
-  const productCurrentPrice = document.querySelector("#productPrice");
-  if (product.originalPrice && product.discountPercentage != 0) {
-    productCurrentPrice.textContent = "$" + product.price;
-    discountBadgeEl.textContent = product.discountPercentage + "%";
-    originalPriceEl.textContent = "$" + product.originalPrice;
-  } else {
-    productCurrentPrice.textContent = product.price;
-    discountBadgeEl.style.display = "none";
-    originalPriceEl.style.display = "none";
-  }
-  document.querySelector("#productDescription").textContent =
-    product.description;
-
-  const colorsContainer = document.querySelector("#productColors");
-  colorsContainer.innerHTML = product.colors
-    .map(
-      (color, i) => `
-      <button class="color-switch${i === 0 ? " color-switch--active" : ""}" style=" background:${color};" aria-label="${color}"></button>
-    `,
-    )
-    .join("");
-
-  const sizesContainer = document.querySelector("#productSizes");
-  sizesContainer.innerHTML = product.sizes
-    .map(
-      (size, i) => `
-      <button class="size-pill${i === 0 ? " size-pill--active" : ""}" data-size="${size}">${size}</button>
-    `,
-    )
-    .join("");
-
-  let selectedColor = product.colors[0];
-  let selectedSize = product.sizes[0];
-
-  colorsContainer.addEventListener("click", (e) => {
-    const btn = e.target.closest(".color-switch");
-    if (!btn) return;
-    colorsContainer
-      .querySelectorAll(".color-switch")
-      .forEach((el) => el.classList.remove("color-switch--active"));
-    btn.classList.add("color-switch--active");
-    selectedColor = btn.dataset.color;
-  });
-
-  sizesContainer.addEventListener("click", (e) => {
-    const btn = e.target.closest(".size-pill");
-    if (!btn) return;
-    sizesContainer
-      .querySelectorAll(".size-pill")
-      .forEach((el) => el.classList.remove("size-pill--active"));
-    btn.classList.add("size-pill--active");
-    selectedSize = btn.dataset.size;
-  });
-  const qtyInput = document.querySelector("#qtyInput");
-  let itemQuantity = qtyInput.textContent;
-  let decreaseQty = document.querySelector("#qtyDecrease");
-  decreaseQty.addEventListener("click", () => {
-    if (itemQuantity > 1) itemQuantity--;
-    qtyInput.textContent = itemQuantity;
-  });
-  document.querySelector("#qtyIncrease").addEventListener("click", () => {
-    itemQuantity++;
-    qtyInput.textContent = itemQuantity;
-  });
-
-  document.querySelector("#addToCartBtn").addEventListener("click", () => {
-    addToCart(product.id, itemQuantity, selectedColor, selectedSize);
-  });
-
-  const related = PRODUCTS.filter((p) => p.id !== product.id).slice(0, 8);
-  renderProductGrid("relatedProductsGrid", related);
-}
-
-function renderCartItem(item) {
-  const product = getProduct(item.id);
-  if (!product) return "";
-  const lineTotal = product.price * item.quantity;
-  return `
-    <article class="cart-item" data-id="${item.id}">
-      <div class="cart-item__image-wrap">
-        <img src="${product.images[0]}" alt="${product.title}" class="cart-item__image">
-      </div>
-      <div class="cart-item__details">
-        <div class="cart-item__top">
-          <div>
-            <h3 class="cart-item__title">${product.title}</h3>
-            <p class="cart-item__attribute">Size: <span class="cart-item__attribute-val">${item.size}</span></p>
-            <p class="cart-item__attribute">Color: <span class="cart-item__attribute-val">${item.color}</span></p>
-          </div>
-          <button class="cart-item__delete" data-action="remove" aria-label="Remove item">${deleteSvg}</button>
-        </div>
-        <div class="cart-item__bottom">
-          <span class="cart-item__price">$${lineTotal}</span>
-          <div class="quantity-selector">
-            <button class="quantity-selector__btn" data-action="decrease">
-              <svg width="13" height="2" viewBox="0 0 13 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12.5 0.75C12.5 0.948912 12.421 1.13968 12.2803 1.28033C12.1397 1.42098 11.9489 1.5 11.75 1.5H0.75C0.551088 1.5 0.360322 1.42098 0.21967 1.28033C0.0790177 1.13968 0 0.948912 0 0.75C0 0.551088 0.0790177 0.360322 0.21967 0.21967C0.360322 0.0790175 0.551088 0 0.75 0H11.75C11.9489 0 12.1397 0.0790175 12.2803 0.21967C12.421 0.360322 12.5 0.551088 12.5 0.75Z" fill="black"/>
-              </svg>
-            </button>
-            <span class="quantity-selector__input" id="cartItemQuantity">${item.quantity}</span>
-            <button class="quantity-selector__btn" data-action="increase">
-              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12.5 6.25C12.5 6.44891 12.421 6.63968 12.2803 6.78033C12.1397 6.92098 11.9489 7 11.75 7H7V11.75C7 11.9489 6.92098 12.1397 6.78033 12.2803C6.63968 12.421 6.44891 12.5 6.25 12.5C6.05109 12.5 5.86032 12.421 5.71967 12.2803C5.57902 12.1397 5.5 11.9489 5.5 11.75V7H0.75C0.551088 7 0.360322 6.92098 0.21967 6.78033C0.0790177 6.63968 0 6.44891 0 6.25C0 6.05109 0.0790177 5.86032 0.21967 5.71967C0.360322 5.57902 0.551088 5.5 0.75 5.5H5.5V0.75C5.5 0.551088 5.57902 0.360322 5.71967 0.21967C5.86032 0.0790177 6.05109 0 6.25 0C6.44891 0 6.63968 0.0790177 6.78033 0.21967C6.92098 0.360322 7 0.551088 7 0.75V5.5H11.75C11.9489 5.5 12.1397 5.57902 12.2803 5.71967C12.421 5.86032 12.5 6.05109 12.5 6.25Z" fill="black"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </article>
-  `;
-}
-
-function renderCart() {
-  const cart = getCart();
-  const listEl = document.querySelector("#cartList");
-
-  if (cart.length === 0) {
-    listEl.innerHTML = `
-      <div class="cart-list__empty">
-        <p>Your cart is empty.</p>
-        <a href="index.html" class="btn btn--primary">Continue Shopping</a>
-      </div>
-    `;
-  } else {
-    listEl.innerHTML = cart.map(renderCartItem).join("");
-  }
-
-  renderCartSummary(cart);
-}
-
-function renderCartSummary(cart) {
-  const subtotal = cart.reduce((sum, item) => {
-    const product = getProduct(item.id);
-    return product ? sum + product.price * item.quantity : sum;
-  }, 0);
-
-  const couponCode = getAppliedCoupon();
-  const discountRate =
-    couponCode && COUPONS[couponCode] ? COUPONS[couponCode] : 0;
-  const discountAmount = Math.round(subtotal * discountRate);
-  const delivery = cart.length > 0 ? DELIVERY_FEE : 0;
-  const total = subtotal - discountAmount + delivery;
-
-  document.querySelector("#cartSubtotal").textContent = "$" + subtotal;
-  document.querySelector("#cartDiscountLabel").textContent = couponCode
-    ? `Discount (-${discountRate * 100}%)`
-    : "Discount";
-  document.querySelector("#cartDiscount").textContent = "-$" + discountAmount;
-  document.querySelector("#cartDelivery").textContent = "$" + delivery;
-  document.querySelector("#cartTotal").textContent = "$" + total;
-
-  const couponInput = document.querySelector("#couponInput");
-  if (couponCode) couponInput.value = couponCode;
-}
-
-function initCartPage() {
-  renderCart();
-
-  document.querySelector("#cartList").addEventListener("click", (e) => {
-    const article = e.target.closest(".cart-item");
-    if (!article) return;
-    const id = Number(article.dataset.id);
-    const action = e.target.closest("[data-action]")?.dataset.action;
-    if (!action) return;
-
-    const cart = getCart();
-    const item = cart.find((c) => c.id === id);
-    if (!item) return;
-
-    if (action === "increase") {
-      item.quantity += 1;
-    } else if (action === "decrease") {
-      item.quantity = Math.max(1, item.quantity - 1);
-    } else if (action === "remove") {
-      const index = cart.indexOf(item);
-      cart.splice(index, 1);
-    }
-
-    saveCart(cart);
-    updateCartCount();
-    renderCart();
-  });
-
-  document.querySelector("#applyCouponBtn").addEventListener("click", () => {
-    const input = document.querySelector("#couponInput");
-    const code = input.value.trim().toUpperCase();
-    const messageEl = document.querySelector("#couponMessage");
-
-    if (!code) {
-      messageEl.textContent = "Please enter a coupon code.";
-      messageEl.style.color = "#FF3333";
-      return;
-    }
-
-    if (COUPONS[code]) {
-      setAppliedCoupon(code);
-      messageEl.textContent = `Coupon ${code} applied!`;
-      messageEl.style.color = "#2ECC71";
-      renderCart();
-    } else {
-      messageEl.textContent = "Invalid coupon code.";
-      messageEl.style.color = "#FF3333";
-    }
-  });
-
-  document.querySelector("#checkoutBtn").addEventListener("click", () => {
-    const cart = getCart();
-
-    if (cart.length === 0) {
-      alert("Your cart is empty. Add some products before checking out.");
-      return;
-    }
-
-    const validCart = cart.filter((item) => getProduct(item.id));
-    if (validCart.length !== cart.length) {
-      saveCart(validCart);
-      updateCartCount();
-      renderCart();
-    }
-    if (validCart.length === 0) {
-      alert(
-        "Some items in your cart are no longer available. Please add products again.",
-      );
-      return;
-    }
-
-    const totalText = document.querySelector("#cartTotal").textContent;
-    document.querySelector("#successModal .modal__text").textContent =
-      `Your order has been placed successfully. Total charged: ${totalText}`;
-    document.querySelector("#successModal").classList.remove("hidden");
-  });
-
-  document.querySelector("#modalOkBtn").addEventListener("click", () => {
-    document.querySelector("#successModal").classList.add("hidden");
-    clearCart();
-    updateCartCount();
-    renderCart();
-  });
-}
-
-function initLoginPage() {
-  const form = document.querySelector("#loginForm");
-  const errorEl = document.querySelector("#authError");
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const email = document.querySelector("#emailInput").value.trim();
-    const password = document.querySelector("#passwordInput").value;
-
-    if (email === VALID_EMAIL && password === VALID_PASSWORD) {
-      login();
-      const params = new URLSearchParams(window.location.search);
-      const redirect = params.get("redirect");
-      window.location.href = redirect
-        ? decodeURIComponent(redirect)
-        : "index.html";
-    } else {
-      errorEl.textContent = "Invalid email or password. Please try again.";
-    }
-  });
-}
-
-if (
-  document.querySelector("#productOverview") ||
-  document.querySelector("#cartList")
-) {
-  protectPage();
-}
-
-document.addEventListener("DOMContentLoaded", async () => {
-  updateCartCount();
-  updateAuthUI();
-  openSidebar();
-
-  if (document.querySelector("#loginForm")) initLoginPage();
-  if (document.querySelector("#newArrivalsGrid")) initHomePage();
-  if (document.querySelector("#productOverview")) initProductPage();
-  if (document.querySelector("#cartList")) initCartPage();
-});
-
-function openSidebar() {
-  let navContainer = document.querySelector(".header__nav-container");
-  let sidebarOvarlay = document.querySelector(".sidebar-overlay");
-  document.querySelector(".hamburger-btn").addEventListener("click", () => {
-    navContainer.style.display = "flex";
-    sidebarOvarlay.style.display = "flex";
-    document.body.overflow = "hidden";
-  });
-  document.querySelector(".header__nav-close").addEventListener("click", () => {
-    navContainer.style.display = "none";
-    sidebarOvarlay.style.display = "none";
-    document.body.overflow = "";
-  });
-  sidebarOvarlay.addEventListener("click", () => {
-    navContainer.style.display = "none";
-    sidebarOvarlay.style.display = "none";
-    document.body.overflow = "";
-  });
-}
-
 function renderReviewCard(review, variant = "compact") {
   const starsMarkup = renderRatingStars(review.rating);
   const verifiedBadge = review.verified
@@ -954,3 +599,44 @@ function renderReviewsGrid(containerId, reviews, variant = "compact") {
     .map((r) => renderReviewCard(r, variant))
     .join("");
 }
+
+function openSidebar() {
+  let navContainer = document.querySelector(".header__nav-container");
+  let sidebarOvarlay = document.querySelector(".sidebar-overlay");
+  document.querySelector(".hamburger-btn").addEventListener("click", () => {
+    navContainer.style.display = "flex";
+    sidebarOvarlay.style.display = "flex";
+    document.body.overflow = "hidden";
+  });
+  document.querySelector(".header__nav-close").addEventListener("click", () => {
+    navContainer.style.display = "none";
+    sidebarOvarlay.style.display = "none";
+    document.body.overflow = "";
+  });
+  sidebarOvarlay.addEventListener("click", () => {
+    navContainer.style.display = "none";
+    sidebarOvarlay.style.display = "none";
+    document.body.overflow = "";
+  });
+}
+
+function initHomePage() {
+  renderProductGrid("newArrivalsGrid", PRODUCTS.slice(0, 6));
+  renderProductGrid("topSellingGrid", PRODUCTS.slice(7, 11));
+  renderReviewsGrid("homeReveiwsGrid", REVIEWS.slice(0, 9));
+}
+
+if (
+  document.querySelector("#productOverview") ||
+  document.querySelector("#cartList")
+) {
+  protectPage();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartCount();
+  updateAuthUI();
+  openSidebar();
+
+  if (document.querySelector("#newArrivalsGrid")) initHomePage();
+});
